@@ -21,7 +21,7 @@ def main():
 
                 master = swap(master, password)
 
-                print(f'key_{title}:{password}')
+                print(f'key_{title}:{password}_')
 
                 saveBody(master, title)
 
@@ -34,6 +34,9 @@ def main():
 
                     if 'key_' in key[0]:
                         key[0] = key[0][4:]
+
+                    if '_' in key[0]:
+                        key[0] = key[:-1]
 
                     body = getBody(key[0])
 
