@@ -1,5 +1,5 @@
 import random
-from titleVerificator import titleVerif
+from service.titleVerificator import titleVerif
 
 def genCode() -> str:
     alphPool = 'abcdefghijklmnopqrstuvwxyz'  # 26
