@@ -3,7 +3,8 @@
 from service.generator import genCode, genTitle
 from service.swap import swap
 from service.decision import decision
-from service.manageBody import saveBody, getBody
+from service.textEditor import textEditor
+from service.cleanKey import cleanKey
 
 
 def main():
@@ -15,34 +16,19 @@ def main():
 
             case 'a':
 
-                master = list(input('file_'))
                 password = genCode()
                 title = genTitle()
 
-                master = swap(master, password)
+                textEditor(title, password)
 
                 print(f'key_{title}:{password}_')
 
-                saveBody(master, title)
-
             case 'r':
                 key = input('key_')
-                master = 'None'
+                key = cleanKey(key)
 
-                if ':' in key:
-                    key = key.split(':')
-
-                    if 'key_' in key[0]:
-                        key[0] = key[0][4:]
-
-                    if '_' in key[0]:
-                        key[0] = key[:-1]
-
-                    body = getBody(key[0])
-
-                    master = swap(body, key[1])
-
-                print(master)
+                if key != None:
+                    textEditor(key[0], key[1])
 
             case 'q':
                 break
