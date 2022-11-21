@@ -39,12 +39,12 @@ Output:
     $UXbz3IYQ8f3é3L93qbqzU983qb9jQUq3^U3TfbjzYVf8rb8E3sLU3TYXqbqzU3X83qLiqzbzLbçãY3^8q3QUzf8q3^U3L983j8Q8Wf83jUQ83qL83TYffUqjYX^UXzU3XY3XY9U3$,2Pc3IGu7-5
 
 
-## Funcoes atualmente:
+## Funções atualmente:
 
 - Adicionar Texto
 - Ler um Texto
 
-## Próximas funcoes:
+## Próximas funções:
 
 - Editar texto
 - Apagar texto

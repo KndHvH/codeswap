@@ -1,9 +1,8 @@
 
-
-from service.generator import genCode, genTitle
-from service.swap import swap
-from service.decision import decision
-from service.manageBody import saveBody, getBody
+from service.features.decision import decision
+from service.features.add import add
+from service.features.read import read
+from service.features.edit import edit
 
 
 def main():
@@ -14,35 +13,22 @@ def main():
         match choice:
 
             case 'a':
-
                 master = list(input('file_'))
-                password = genCode()
-                title = genTitle()
-
-                master = swap(master, password)
-
-                print(f'key_{title}:{password}_')
-
-                saveBody(master, title)
+                add(master)
 
             case 'r':
                 key = input('key_')
-                master = 'None'
+                read(key)
 
-                if ':' in key:
-                    key = key.split(':')
+            case 'e':
+                key = input('key_')
+                read(key)
+                newText = input('newfile_')
+                edit(newText,key)
 
-                    if 'key_' in key[0]:
-                        key[0] = key[0][4:]
-
-                    if '_' in key[0]:
-                        key[0] = key[:-1]
-
-                    body = getBody(key[0])
-
-                    master = swap(body, key[1])
-
-                print(master)
+            case 'd':
+                #TODO delete
+                pass
 
             case 'q':
                 break
