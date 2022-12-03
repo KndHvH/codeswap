@@ -27,8 +27,10 @@ def main():
                 edit(newText,key)
 
             case 'd':
-                #TODO delete
-                pass
+                key = input('key_')
+                read(key)
+                if input('d_to_delete_') == 'd':
+                    edit('',key)
 
             case 'q':
                 break
