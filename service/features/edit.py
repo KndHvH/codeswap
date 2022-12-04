@@ -9,8 +9,6 @@ def edit(master, key):
 
     key = getKey(key)
 
-    print(f'key_{key[0]}:{key[1]}_')
-
     json = add(master, key[1], key[0])
     
     save_json(json)
