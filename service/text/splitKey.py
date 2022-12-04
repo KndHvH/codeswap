@@ -1,7 +1,6 @@
 
 
 def getKey(key):
-
     if ':' in key:
         key = key.split(':')
 

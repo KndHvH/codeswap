@@ -3,6 +3,7 @@ from service.features.decision import decision
 from service.features.add import add
 from service.features.read import read
 from service.features.edit import edit
+from service.json.managejson import *
 
 
 def main():
@@ -14,21 +15,24 @@ def main():
 
             case 'a':
                 master = list(input('file_'))
-                add(master)
+                json = add(master)
+                save_json(json)
 
             case 'r':
                 key = input('key_')
-                read(key)
+                print(read(key))
 
             case 'e':
                 key = input('key_')
-                read(key)
+                print(read(key))
                 newText = input('newfile_')
-                edit(newText,key)
+                edit(newText, key)
 
             case 'd':
-                #TODO delete
-                pass
+                key = input('key_')
+                print(read(key))
+                if input('d_to_delete_') == 'd':
+                    edit('', key)
 
             case 'q':
                 break
