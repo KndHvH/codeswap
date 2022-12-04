@@ -14,7 +14,8 @@ def main():
 
             case 'a':
                 master = list(input('file_'))
-                add(master)
+                json = add(master)
+                
 
             case 'r':
                 key = input('key_')
