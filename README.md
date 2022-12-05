@@ -59,7 +59,7 @@ Output:
 - Editar texto
 - Apagar texto
 
-## Próximas funções:
-- enviar chave para email pessoal
-- guardar textos em banco de dados
+## Próximos Passos:
+- Enviar chave para email pessoal
+- Guardar textos em banco de dados
 

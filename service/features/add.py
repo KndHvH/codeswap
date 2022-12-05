@@ -8,4 +8,4 @@ def add(master, password=genCode(), title=genTitle()):
 
     master = swap(master, password)
 
-    return {'code': [{'title': title, 'file': master}]}
+    return {'title': title, 'file': master}

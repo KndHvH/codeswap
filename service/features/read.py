@@ -8,10 +8,8 @@ def read(key):
     key = getKey(key)
 
     if key != None:
-        file = read_json(key[0])
+        file = get_file(key[0])
 
-        body = file['code'][0]['file']
-
-        master = swap(body, key[1])
+        master = swap(file, key[1])
 
         return master
