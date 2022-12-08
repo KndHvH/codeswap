@@ -1,6 +1,6 @@
 
 
-def getKey(key):
+def get_key(key):
     if ':' in key:
         key = key.split(':')
 

@@ -2,6 +2,8 @@ import json
 import os
 scriptPath = os.path.dirname(__file__)
 
+from service.db.create_db import create_db
+
 
 def save_json(dict):
     #{'code': [{'title': 'test', 'file': 'rfxr'},]}
@@ -24,14 +26,15 @@ def save_json(dict):
 
 
 def get_json():
-    try:
-        relPath = '../../database/db.json'
-        filepath = os.path.join(scriptPath, relPath)
-        with open(filepath, "r") as file:
-            return json.load(file)
+    for i in range(0,2):
+        try:
+            relPath = '../../database/db.json'
+            filepath = os.path.join(scriptPath, relPath)
+            with open(filepath, "r") as file:
+                return json.load(file)
 
-    except FileNotFoundError:
-        return None
+        except FileNotFoundError:
+            create_db()
 
 
 def get_file(title):

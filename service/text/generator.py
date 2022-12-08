@@ -1,5 +1,6 @@
 import random
-from service.text.titleVerificator import titleVerif
+from service.text.title_verificator import title_verif
+
 
 def genCode() -> str:
     alphPool = 'abcdefghijklmnopqrstuvwxyz'  # 26
@@ -13,6 +14,7 @@ def genCode() -> str:
     pool = ''.join(pool)
 
     return pool
+
 
 def genTitle() -> str:
 
@@ -34,5 +36,5 @@ def genTitle() -> str:
 
         pool = ''.join(pool)
 
-        if titleVerif(pool):
+        if title_verif(pool):
             return pool

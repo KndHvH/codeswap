@@ -3,7 +3,7 @@ import json
 scriptPath = os.path.dirname(__file__)
 
 
-def titleVerif(title) -> bool:
+def title_verif(title) -> bool:
     relPath = '../../database/db.json'
     filepath = os.path.join(scriptPath, relPath)
     with open(filepath, "r") as file:

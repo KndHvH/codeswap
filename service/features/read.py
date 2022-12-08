@@ -1,11 +1,11 @@
 
 from service.text.swap import swap
-from service.text.splitKey import getKey
+from service.text.get_key import get_key
 from service.json.managejson import *
 
 
 def read(key):
-    key = getKey(key)
+    key = get_key(key)
 
     if key != None:
         file = get_file(key[0])
