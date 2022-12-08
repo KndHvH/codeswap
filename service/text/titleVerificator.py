@@ -1,13 +1,15 @@
 import os
+import json
 scriptPath = os.path.dirname(__file__)
 
-def titleVerif(title: str) -> bool:
-    try:
-        relPath = 'database/'+title+'.txt'
-        filepath = os.path.join(scriptPath, relPath)
-        with open(filepath, "r") as file:
-            body = file.read()
-        return False
-    
-    except FileNotFoundError:
+
+def titleVerif(title) -> bool:
+    relPath = '../../database/db.json'
+    filepath = os.path.join(scriptPath, relPath)
+    with open(filepath, "r") as file:
+        db = json.load(file)
+
+        for file in db['code']:
+            if file['title'] == title:
+                return False
         return True

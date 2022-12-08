@@ -1,8 +1,8 @@
-from service.text.generator import genCode, genTitle
+
 from service.text.swap import swap
 
 
-def add(master, password=genCode(), title=genTitle()):
+def add(master, password, title):
 
     print(f'key_{title}:{password}_')
 

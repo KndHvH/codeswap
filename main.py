@@ -4,6 +4,7 @@ from service.features.add import add
 from service.features.read import read
 from service.features.edit import edit
 from service.json.managejson import *
+from service.text.generator import genCode, genTitle
 
 
 def main():
@@ -15,7 +16,7 @@ def main():
 
             case 'a':
                 master = list(input('file_'))
-                json = add(master)
+                json = add(master,genCode(),genTitle())
                 save_json(json)
 
             case 'r':

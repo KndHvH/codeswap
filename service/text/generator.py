@@ -30,7 +30,7 @@ def genTitle() -> str:
 
         random.shuffle(pool)
 
-        pool = pool[0:5]
+        pool = pool[0:3]
 
         pool = ''.join(pool)
 

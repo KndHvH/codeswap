@@ -2,6 +2,9 @@ from service.features.add import add
 from service.features.read import read
 from service.json.managejson import *
 from service.text.splitKey import getKey
+from service.text.titleVerificator import  titleVerif
+
+import pytest
 
 
 class TestClass:
@@ -39,3 +42,13 @@ class TestClass:
         data = read(key)
 
         assert data == entry
+
+    def test_when_title_verif_receive_test4_already_created_return_false(self):
+
+        entry = {'title': 'test4', 'file': 'rfxr'}
+        expect = False
+
+        save_json(entry)
+
+        assert titleVerif('test4') == expect
+            
