@@ -9,7 +9,7 @@ class FileAlreadyExists(Exception):
 
 def create_db():
     try:
-        relPath = '../../database/db.json'
+        relPath = '../database/db.json'
         filepath = os.path.join(scriptPath, relPath)
         with open(filepath, "r") as file:
             file = json.load(file)
