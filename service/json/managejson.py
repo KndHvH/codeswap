@@ -2,7 +2,7 @@ import json
 import os
 scriptPath = os.path.dirname(__file__)
 
-from service.db.create_db import create_db
+from service.db_man.create_db import create_db
 
 
 def save_json(dict):
