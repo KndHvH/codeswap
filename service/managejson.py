@@ -2,7 +2,7 @@ import json
 import os
 scriptPath = os.path.dirname(__file__)
 
-from service.db_man.create_db import create_db
+from service.create_db import create_db
 
 
 def save_json(dict):
@@ -18,7 +18,7 @@ def save_json(dict):
 
     full_file = {'code': files}
 
-    relPath = '../../database/db.json'
+    relPath = '../database/db.json'
     filepath = os.path.join(scriptPath, relPath)
     with open(filepath, 'w') as outfile:
         json.dump(full_file, outfile)
@@ -28,7 +28,7 @@ def save_json(dict):
 def get_json():
     for i in range(0,2):
         try:
-            relPath = '../../database/db.json'
+            relPath = '../database/db.json'
             filepath = os.path.join(scriptPath, relPath)
             with open(filepath, "r") as file:
                 return json.load(file)

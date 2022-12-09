@@ -1,9 +1,9 @@
 from service.features.add import add
 from service.features.read import read
-from service.json.managejson import *
+from service.managejson import *
 from service.text.get_key import get_key
 from service.text.title_verificator import title_verif
-from service.db_man.create_db import create_db, FileAlreadyExists
+from service.create_db import create_db, FileAlreadyExists
 
 
 import pytest
