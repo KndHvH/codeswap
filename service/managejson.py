@@ -1,10 +1,12 @@
-from service.create_db import create_db
 import json
 import os
 scriptPath = os.path.dirname(__file__)
 
+from service.create_db import create_db
+
 
 def save_json(dict):
+    #{'code': [{'title': 'test', 'file': 'rfxr'},]}
     files = get_json()
 
     if files == None:
@@ -20,10 +22,11 @@ def save_json(dict):
     filepath = os.path.join(scriptPath, relPath)
     with open(filepath, 'w') as outfile:
         json.dump(full_file, outfile)
+        # remove str\
 
 
 def get_json():
-    for i in range(0, 2):
+    for i in range(0,2):
         try:
             relPath = '../database/db.json'
             filepath = os.path.join(scriptPath, relPath)

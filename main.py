@@ -5,11 +5,9 @@ from service.features.read import read
 from service.features.edit import edit
 from service.managejson import *
 from service.text.generator import genCode, genTitle
-from service.login import login
 
 
 def main():
-    user = login()
     while True:
 
         choice = decision()
@@ -18,13 +16,11 @@ def main():
 
             case 'a':
                 master = list(input('file_'))
-                title = input('file title_')
-
-                json = add(master, genCode(), title, user)
+                json = add(master,genCode(),genTitle())
                 save_json(json)
 
             case 'r':
-                key = input('title_')
+                key = input('key_')
                 print(read(key))
 
             case 'e':
