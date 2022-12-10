@@ -141,6 +141,6 @@ results.xlsx
 
 darknet/
 
-db.txt
+db.json
 
 *.swp
