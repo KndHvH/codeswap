@@ -1,5 +1,5 @@
 
-from service.decision import decision
+from service.features.decision import decision
 from service.features.add import add
 from service.features.read import read
 from service.features.edit import edit
@@ -24,12 +24,12 @@ def main():
                 save_json(json)
 
             case 'r':
-                title = input('title_')
-                print(read(title, user))
+                key = input('title_')
+                print(read(key))
 
             case 'e':
-                title = input('title_')
-                print(read(title, user))
+                key = input('key_')
+                print(read(key))
                 newText = input('newfile_')
                 edit(newText, key)
 
