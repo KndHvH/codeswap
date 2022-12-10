@@ -8,7 +8,7 @@ def login():
             print('must be at leat a 2 digits number_')
             user = int(input('password_'))
 
-            if len(str(user)) > 10 or len(str(user)) < 2:
+            if len(str(user)) < 2:
                 raise ValueError
 
             return user

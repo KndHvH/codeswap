@@ -19,10 +19,12 @@ class TestClass:
         text = 'text'
         password = 'rtef'
         title = 'test'
+        user = 1233
 
-        expect = {'title': 'test', 'file': 'rfxr'}
+        expect = 'test'
 
-        assert expect == add(text, password=password, title=title)
+        assert expect == add(text, password=password,
+                             title=title, user=user)['title']
 
     def test_when_receive_json_create_file(self):
 
@@ -34,17 +36,18 @@ class TestClass:
 
         assert data == entry['file']
 
-    def test_when_add_secret_create_file_and_read_file(self):
+    def test_when_add_text_create_file_and_read_file(self):
 
-        entry = 'secret'
-        key = 'test3:abcdefghij'
+        entry = 'text'
+        title = 'test3'
+        password = 'abcdefghij'
+        user = 1233
 
-        keyList = get_key(key)
 
-        json = add(entry, keyList[1], keyList[0])
+        json = add(entry,password,title,user)
         save_json(json)
 
-        data = read(key)
+        data = read(title,user)
 
         assert data == entry
 

@@ -15,7 +15,7 @@ def main():
         choice = decision()
 
         match choice:
-
+            
             case 'a':
                 master = list(input('file_'))
                 title = input('file title_')
