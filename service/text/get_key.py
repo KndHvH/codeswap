@@ -1,14 +1,14 @@
+from service.managejson import get_json
+from service.bin import *
 
 
-def get_key(key):
-    if ':' in key:
-        key = key.split(':')
+def get_key(title, user):
+    file = get_json()
+    file = file['code']
 
-        if 'key_' in key[0]:
-            key[0] = key[0][4:]
+    for i in file:
+        if i['title'] == title:
+            key = bin_to_code(count_to_bin(i['user']//user))
 
-        if '_' in key[0]:
-            key[0] = key[:-1]
-
-        return key
+            return key[1:]
     return None

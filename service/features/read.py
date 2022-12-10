@@ -4,12 +4,11 @@ from service.text.get_key import get_key
 from service.managejson import *
 
 
-def read(key):
-    key = get_key(key)
-
+def read(title, user):
+    key = get_key(title, user)
     if key != None:
-        file = get_file(key[0])
+        file = get_file(title)
 
-        master = swap(file, key[1])
+        master = swap(file, key)
 
         return master
