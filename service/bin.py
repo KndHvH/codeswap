@@ -12,8 +12,8 @@ def bin_to_code(bin):
 def bin_to_count(bin):
 
     result = []
-    byte = bin[0]  # 0
-    count = 0
+
+    byte, count = bin[0]
     try:
         for i, v in enumerate(bin):
             if v == byte:
@@ -28,18 +28,14 @@ def bin_to_count(bin):
         result.append(f'{count}{byte}')
 
     finally:
-        a = []
-        b = []
+        a, b = []
         for i in result:
             if '0' == i[1]:
                 a.append(i[0])
-            if '1' == i[1]:
+            else:
                 b.append(i[0])
 
-        a = ''.join(a)
-        b = ''.join(b)
-
-        return a+'0'+b
+        return ''.join(a)+'0'+''.join(b)
 
 
 def count_to_bin(count):

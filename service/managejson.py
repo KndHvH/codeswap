@@ -6,11 +6,8 @@ scriptPath = os.path.dirname(__file__)
 
 def save_json(dict):
     files = get_json()
-
-    if files == None:
-        files = []
-    else:
-        files = files['code']
+    
+    files = [] if files == None else files['code']
 
     files.append(dict)
 

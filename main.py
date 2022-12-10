@@ -4,7 +4,7 @@ from service.features.add import add
 from service.features.read import read
 from service.features.edit import edit
 from service.managejson import *
-from service.text.generator import genCode, genTitle
+from service.text.generator import genCode
 from service.login import login
 
 
