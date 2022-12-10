@@ -43,7 +43,8 @@ def bin_to_count(bin):
 
 
 def count_to_bin(count):
-    count = count.split('0')
+
+    count = str(count).split('0')
     result = []
     for i, j in zip(count[0], count[1]):
         result.append(int(i)*'0')
