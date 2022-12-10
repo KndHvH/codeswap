@@ -44,4 +44,3 @@ def get_file(title):
     for i in file:
         if i['title'] == title:
             return i['file']
-    return 'None'
