@@ -18,7 +18,7 @@ class TestClass:
         text = 'text'
         password = 'rtef'
         title = 'test'
-        user = 1233
+        user = str('1'*300)
 
         expect = 'test'
 
@@ -40,7 +40,7 @@ class TestClass:
         entry = 'text'
         title = 'test3'
         password = 'abcdefghij'
-        user = 1233
+        user = str('1'*300)
 
 
         json = add(entry,password,title,user)

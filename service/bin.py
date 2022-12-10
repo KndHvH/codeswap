@@ -1,3 +1,4 @@
+import itertools
 
 
 def code_to_bin(code):
@@ -13,7 +14,8 @@ def bin_to_count(bin):
 
     result = []
 
-    byte, count = bin[0]
+    byte = bin[0]
+    count = 0
     try:
         for i, v in enumerate(bin):
             if v == byte:
@@ -27,25 +29,26 @@ def bin_to_count(bin):
     except IndexError:
         result.append(f'{count}{byte}')
 
-    finally:
-        a, b = []
-        for i in result:
-            if '0' == i[1]:
-                a.append(i[0])
-            else:
-                b.append(i[0])
+    
+    a = []
+    b = []
+    for i in result:
+        if '0' == i[1]:
+            a.append(i[0])
+        else:
+            b.append(i[0])
 
-        return ''.join(a)+'0'+''.join(b)
+    a = ''.join(a)
+    b = ''.join(b)
+    return a+'0'+b
 
 
 def count_to_bin(count):
 
     count = str(count).split('0')
     result = []
-    for i, j in zip(count[0], count[1]):
-        result.append(int(i)*'0')
-        result.append(int(j)*'1')
 
-    result.append(int(count[0][-1])*'0' if len(count[0])
-                  > len(count[1]) else int(count[1][-1])*'1')
+    for i, j in itertools.zip_longest(count[0], count[1]):
+        result.append(int(i)*'0') if i != None else None
+        result.append(int(j)*'1') if j != None else None
     return ''.join(result)

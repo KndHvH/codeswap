@@ -15,11 +15,10 @@ def main():
         choice = decision()
 
         match choice:
-            
+
             case 'a':
                 master = list(input('file_'))
                 title = input('file title_')
-
                 json = add(master, genCode(), title, user)
                 save_json(json)
 
@@ -31,13 +30,13 @@ def main():
                 title = input('title_')
                 print(read(title, user))
                 newText = input('newfile_')
-                edit(newText, key)
+                edit(newText, title, user)
 
             case 'd':
-                key = input('key_')
-                print(read(key))
+                title = input('title_')
+                print(read(title, user))
                 if input('d_to_delete_') == 'd':
-                    edit('', key)
+                    edit('', title, user)
 
             case 'q':
                 break

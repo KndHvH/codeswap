@@ -4,10 +4,10 @@ from service.managejson import *
 from service.features.add import add
 
 
-def edit(master, key):
+def edit(master, title, user):
 
-    key = get_key(key)
+    key = get_key(title, user)
 
-    json = add(master, key[1], key[0])
+    json = add(master, key, title, user)
 
-    save_json(json)
+    save_json(json, replace=True)
