@@ -4,7 +4,7 @@ from service.text.get_key import get_key
 from service.managejson import *
 
 
-def read(title, user):
+def read_file(title, user):
     key = get_key(title, user)
     if key != None:
         file = get_file(title)

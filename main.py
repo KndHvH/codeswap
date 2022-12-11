@@ -2,9 +2,9 @@
 import click
 
 from service.text.generator import genCode
-from service.features.add import add
-from service.features.read import read
-from service.features.edit import edit
+from service.features.add import add_file
+from service.features.read import read_file
+from service.features.edit import edit_file
 from service.login import login
 from service.managejson import save_json
 
@@ -15,44 +15,54 @@ def main():
 
 
 @main.command()
-def a():
+@click.option('-t', default=None, help='file title')
+def add(t):
     user = login()
+    if t == None:
+        t = input(click.style('file title_', fg='green'))
 
-    click.clear()
     master = list(input(click.style('file_', fg='green')))
-    title = input(click.style('file title_', fg='green'))
-    json = add(master, genCode(), title, user)
+    json = add_file(master, genCode(), t, user)
     save_json(json)
 
 
 @main.command()
-def r():
+@click.option('-t', default=None, help='file title')
+def read(t):
     user = login()
+    if t == None:
+        t = input(click.style('file title_', fg='green'))
 
-    title = input('title_')
-    print(read(title, user))
+    print(read_file(t, user))
     click.pause()
 
 
 @main.command()
-def e():
+@click.option('-t', default=None, help='file title')
+def edit(t):
     user = login()
-    title = input('title_')
-    print(read(title, user))
+    if t == None:
+        t = input(click.style('file title_', fg='green'))
+
+
+    print(read_file(t, user))
     click.pause()
     newText = input('newfile_')
-    edit(newText, title, user)
+    edit_file(newText, t, user)
 
 
 @main.command()
-def d():
+@click.option('-t', default=None, help='file title')
+def delete(t):
     user = login()
-    title = input('title_')
-    print(read(title, user))
-    if input('d_to_delete_') == 'd':
-        edit('', title, user)
+    if t == None:
+        t = input(click.style('file title_', fg='green'))
 
+
+    print(read_file(t, user))
+    if input('d_to_delete_') == 'd':
+        edit_file('', t, user)
 
 
 if __name__ == '__main__':
-   main()
+    main()
