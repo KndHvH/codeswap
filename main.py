@@ -63,6 +63,3 @@ def delete(t):
     if input('d_to_delete_') == 'd':
         edit_file('', t, user)
 
-
-if __name__ == '__main__':
-    main()
