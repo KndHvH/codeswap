@@ -1,26 +1,42 @@
 # CodeSwap
 
-## Sobre
-
 Este é um projeto pessoal para poder testar e por meu conhecimento dos recentes cursos realizados em prática.
 
 Consiste em um programa que tem como funcão principal armazenar localmente textos e informações sensívei de uma forma fácil e segura.
 
+
+
+## Conteudo
+ * [Sobre](#Sobre)
+ * [Instalação](#Instalação)
+ * [Funcionalidades](#Funcionalidades)
+ * [Como Funciona?](#Como-Funciona?)
+ * [Próximos Passos](#Próximos-Passos)
+
+
+
+## Sobre
 O grande diferencial do CodeSwap, é que o texto armazenado localmente é impossivel de ser lido sem a senha criada pelo usuario, e essa mesma senha não é armazenada em nenhum lugar! 
 
 Outra questão positiva, é que não existe uma senha "certa" ou "errada", a lógica do CodeSwap permite que o usuario tente ler um documento mesmo que a senha esteja incorreta, porém o texto que esse usuario ira ler, sera o mesmo guardado no banco de dados, uma vez que a senha é uma apenas uma engrenagem no funcionamento do programa como um todo! 
 
 Se quiser saber mais sobre as Funcionalidades ou sobre as Lógicas de Codificação, eu pretendo compartilhar tudo nesse mesmo documento.
 
+## Instalação:
 
-### Funcionalidades - Add:
+    $ git clone https://www.github.com/kndhvh/codeswap.git
+    $ cd codeswap
+    $ pip install .
 
+## Funcionalidades:
+
+### Add
 Adiciona um Texto na base de dados, depende que o usuario coloque uma senha e de ao seu texto um Título.
 
 
 
-    $ python3 main.py add
-    $ python3 main.py add -t titulo_do_arquivo
+    $ cswap add
+    $ cswap add -t titulo_do_arquivo
 
 
 #### Texto exemplo: 
@@ -41,7 +57,7 @@ consequentemente gerando textos criptografados completamente distintos e complet
 
 Terminal:
 
-    $ python3 main.py add -t zenit 
+    $ cswap add -t zenit 
     password_1234
     file_Zenit Polar é um sistema simples de criptografia, que consiste na substituição das letras de uma palavra pela sua correspondente no nome ZENIT POLAR.
 
@@ -61,7 +77,7 @@ Json File:
 
 Terminal:
 
-    $ python3 main.py add -t zenit2       
+    $ cswap add -t zenit2       
     password_1234
     file_Zenit Polar é um sistema simples de criptografia, que consiste na substituição das letras de uma palavra pela sua correspondente no nome ZENIT POLAR.
 
@@ -83,18 +99,14 @@ Json File:
     }
     
 
-## Funções atualmente:
 
-- Adicionar Texto
-- Ler um Texto
-- Editar texto
-- Apagar texto
-- Usuarios distintos nao podem ler ou alterar documentos uns dos outros
-- Nenhuma informaçao sigilosa ou sensivel é armazenada
+## Como Funciona?
+
+
 
 ## Próximos Passos:
 
 - feat: textos com multiplas linhas
-- fix: criar 2 arquivos com o mesmo nome
 - feat: editar senha
 - feat: list all files
+- fix: possibilidade de criar 2 arquivos com o mesmo nome

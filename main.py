@@ -33,7 +33,7 @@ def read(t):
     if t == None:
         t = input(click.style('file title_', fg='green'))
 
-    print(read_file(t, user))
+    click.echo(read_file(t, user))
 
 
 @main.command()
@@ -43,8 +43,7 @@ def edit(t):
     if t == None:
         t = input(click.style('file title_', fg='green'))
 
-
-    print(read_file(t, user))
+    click.echo(read_file(t, user))
     newText = input('newfile_')
     edit_file(newText, t, user)
 
@@ -56,8 +55,6 @@ def delete(t):
     if t == None:
         t = input(click.style('file title_', fg='green'))
 
-
-    print(read_file(t, user))
+    click.echo(read_file(t, user))
     if input('d_to_delete_') == 'd':
         edit_file('', t, user)
-
