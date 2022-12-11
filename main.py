@@ -34,7 +34,6 @@ def read(t):
         t = input(click.style('file title_', fg='green'))
 
     print(read_file(t, user))
-    click.pause()
 
 
 @main.command()
@@ -46,7 +45,6 @@ def edit(t):
 
 
     print(read_file(t, user))
-    click.pause()
     newText = input('newfile_')
     edit_file(newText, t, user)
 

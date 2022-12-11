@@ -97,3 +97,4 @@ Json File:
 - feat: textos com multiplas linhas
 - fix: criar 2 arquivos com o mesmo nome
 - feat: editar senha
+- feat: list all files
