@@ -1,6 +1,10 @@
+import click
 
 from service.text.swap import swap
 from service.bin import *
+from service.login import login
+from service.text.generator import genCode
+from service.managejson import save_json
 
 
 def add(master, password, title, user):
@@ -14,3 +18,15 @@ def add(master, password, title, user):
     if len(str(user)) > 255:
         return {'title': title, 'user': user, 'file': master}
     return {'title': 'None', 'user': 'None', 'file': 'None'}
+
+
+def add_menu_option(user=None):
+    if user == None:
+        print('meme')
+        user = login()
+
+    click.clear()
+    master = list(input(click.style('file_', fg='green')))
+    title = input(click.style('file title_', fg='green'))
+    json = add(master, genCode(), title, user)
+    save_json(json)
