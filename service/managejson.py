@@ -13,7 +13,8 @@ def save_json(dict, replace=False):
     if replace:
         files = delete(files, dict)
 
-    files.append(dict)
+    if dict['file'] != '':
+        files.append(dict)
 
     full_file = {'code': files}
 

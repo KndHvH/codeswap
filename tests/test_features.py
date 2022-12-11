@@ -1,5 +1,5 @@
-from service.features.add import add
-from service.features.read import read
+from service.features.add import add_file
+from service.features.read import read_file
 from service.managejson import *
 from service.text.title_verificator import title_verif
 
@@ -19,8 +19,8 @@ class TestClass:
 
         expect = 'test'
 
-        assert expect == add(text, password=password,
-                             title=title, user=user)['title']
+        assert expect == add_file(text, password=password,
+                                  title=title, user=user)['title']
 
     def test_when_receive_json_create_file(self):
 
@@ -39,10 +39,10 @@ class TestClass:
         password = 'abcdefghij'
         user = int('1'*300)
 
-        json = add(entry, password, title, user)
+        json = add_file(entry, password, title, user)
         save_json(json)
 
-        data = read(title, user)
+        data = read_file(title, user)
 
         assert data == entry
 
@@ -51,7 +51,7 @@ class TestClass:
         entry_user = 1233
         expect = {'title': 'None', 'user': 'None', 'file': 'None'}
 
-        assert expect == add('text', 'pass', 'title', entry_user)
+        assert expect == add_file('text', 'pass', 'title', entry_user)
 
     def test_when_title_verif_receive_test4_already_created_return_false(self):
 
