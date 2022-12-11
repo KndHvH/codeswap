@@ -20,13 +20,5 @@ def add(master, password, title, user):
     return {'title': 'None', 'user': 'None', 'file': 'None'}
 
 
-def add_menu_option(user=None):
-    if user == None:
-        print('meme')
-        user = login()
 
-    click.clear()
-    master = list(input(click.style('file_', fg='green')))
-    title = input(click.style('file title_', fg='green'))
-    json = add(master, genCode(), title, user)
-    save_json(json)
+    

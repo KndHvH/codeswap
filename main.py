@@ -1,50 +1,58 @@
 
 import click
 
-from service.decision import decision
-from service.features.add import add_menu_option
+from service.text.generator import genCode
+from service.features.add import add
 from service.features.read import read
 from service.features.edit import edit
 from service.login import login
+from service.managejson import save_json
 
-@click.command()
+
+@click.group()
 def main():
-    user = login()
-    while True:
-        choice = decision()
-
-        match choice:
-
-            case 'a':
-                add_menu_option(user)
-
-            case 'r':
-                title = input('title_')
-                print(read(title, user))
-                click.pause()
-
-            case 'e':
-                title = input('title_')
-                print(read(title, user))
-                click.pause()
-                newText = input('newfile_')
-                edit(newText, title, user)
-
-            case 'd':
-                title = input('title_')
-                print(read(title, user))
-                if input('d_to_delete_') == 'd':
-                    edit('', title, user)
-
-            case 'q':
-                break
+    pass
 
 
-@click.command()
+@main.command()
 def a():
-    print('test')
-    add_menu_option()
+    user = login()
+
+    click.clear()
+    master = list(input(click.style('file_', fg='green')))
+    title = input(click.style('file title_', fg='green'))
+    json = add(master, genCode(), title, user)
+    save_json(json)
+
+
+@main.command()
+def r():
+    user = login()
+
+    title = input('title_')
+    print(read(title, user))
+    click.pause()
+
+
+@main.command()
+def e():
+    user = login()
+    title = input('title_')
+    print(read(title, user))
+    click.pause()
+    newText = input('newfile_')
+    edit(newText, title, user)
+
+
+@main.command()
+def d():
+    user = login()
+    title = input('title_')
+    print(read(title, user))
+    if input('d_to_delete_') == 'd':
+        edit('', title, user)
+
 
 
 if __name__ == '__main__':
-    main()
+   main()

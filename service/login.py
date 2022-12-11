@@ -4,6 +4,7 @@ import click
 def login():
     while True:
         try:
+            click.clear()
             click.echo('pls insert your password_')
             click.echo('if u are a new user just create one_')
             click.echo('must be at leat a 2 digits number_')
