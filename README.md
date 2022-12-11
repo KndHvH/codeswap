@@ -72,7 +72,7 @@ Json File:
            }
        ]
    }
- #### Segunda vez submetido:
+#### Segunda vez submetido:
  
 Terminal:
  
@@ -96,8 +96,32 @@ Json File:
            }
        ]
    }
+
+
   
+### Read:
+
+le um texto na base de dados, depende que o usuário coloque sua senha e o nome do arquivo. Se colocar a senha errada, o programa ira trazer o documento da forma que ele esta na base de dados.
  
+    $ cswap read
+    $ cswap read -t titulo_do_arquivo
+
+#### Exemplo:
+
+Senha certa:
+
+    $ cswap read -t zenit
+    password_1234
+    Zenit Polar é um sistema simples de criptografia, que consiste na substituição das letras de uma palavra pela sua correspondente no nome ZENIT POLAR.
+
+Senha errada:
+
+    $ cswap read -t zenit
+    password_4321
+    Lt'yevflojbv\u00e9vw4vOyOet4jvOy4zotOvDtv3byzel bjPyj>v0wtv3l'OyOetv'jvOwrOeyewy\u00e7\u00e3lvDjOvotebjOvDtvw4jvzjoj bjvztojvOwjv3lbbtOzl'Dt'etv'lv'l4tvLNE)8vfsZGhg
+
+
+
  
 ## Como Funciona?
  
