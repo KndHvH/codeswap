@@ -143,4 +143,6 @@ darknet/
 
 db.json
 
+database/db.json
+
 *.swp
