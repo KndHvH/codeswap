@@ -2,32 +2,42 @@
 import click
 
 
-from vapp.menu.menu_features import *
-from vapp.login import login
+from service.menu.menu_features import *
+from service.login import login
 
 
 @click.group()
-@click.option('-t', default=None, help='file title')
-def main(t):
-    if not t:
-        t = input(click.style('file title_', fg='green'))
+def main():
+    pass
 
 
 @main.command()
+@click.option('-t', default=None, help='file title')
 def add(t):
+    if not t:
+        t = input(click.style('file title_', fg='green'))
     menu_add(t, login())
 
 
 @main.command()
+@click.option('-t', default=None, help='file title')
 def read(t):
+    if not t:
+        t = input(click.style('file title_', fg='green'))
     menu_read(t, login())
 
 
 @main.command()
+@click.option('-t', default=None, help='file title')
 def edit(t):
+    if not t:
+        t = input(click.style('file title_', fg='green'))
     menu_edit(t, login())
 
 
 @main.command()
+@click.option('-t', default=None, help='file title')
 def delete(t):
+    if not t:
+        t = input(click.style('file title_', fg='green'))
     menu_delete(t, login())
