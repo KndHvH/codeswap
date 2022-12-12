@@ -1,10 +1,10 @@
 import click
 
-from service.text.generator import genCode
-from service.features.add import add_file
-from service.features.read import read_file
-from service.features.edit import edit_file
-from service.text.manage_json import save_json
+from text.generator import genCode
+from features.add import add_file
+from features.read import read_file
+from features.edit import edit_file
+from text.manage_json import save_json
 
 
 def menu_add(title, user):

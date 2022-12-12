@@ -113,7 +113,7 @@ class TestClass:
             'file': 'newfile'
         }]
 
-        relPath = '../../database/db.json'
+        relPath = '../database/db.json'
         filepath = os.path.join(scriptPath, relPath)
 
         os.remove(filepath)

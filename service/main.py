@@ -2,8 +2,8 @@
 import click
 
 
-from service.menu.menu_features import *
-from service.login import login
+from menu.menu_features import *
+from login import login
 
 
 @click.group()
