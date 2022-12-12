@@ -19,7 +19,7 @@ def menu_read(title, user):
 
 def menu_edit(title, user):
     click.echo(read_file(title, user))
-    newText = input(click.style('', fg='green'))    
+    newText = input(click.style('new file_', fg='green'))    
     edit_file(newText, title, user)
 
 
