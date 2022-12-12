@@ -27,7 +27,7 @@ mesmo documento.
 
     $ git clone https://www.github.com/kndhvh/codeswap.git
     $ cd codeswap
-    $ pip install .
+    $ pip install -e .
 
 ## Funcionalidades:
 ### Add

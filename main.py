@@ -1,12 +1,9 @@
 
 import click
 
-from service.text.generator import genCode
-from service.features.add import add_file
-from service.features.read import read_file
-from service.features.edit import edit_file
+
+from service.menu.menu_features import *
 from service.login import login
-from service.managejson import save_json
 
 
 @click.group()
@@ -17,45 +14,30 @@ def main():
 @main.command()
 @click.option('-t', default=None, help='file title')
 def add(t):
-    user = login()
-    if t == None:
+    if not t:
         t = input(click.style('file title_', fg='green'))
-
-    master = list(input(click.style('file_', fg='green')))
-    json = add_file(master, genCode(), t, user)
-    save_json(json)
+    menu_add(t, login())
 
 
 @main.command()
 @click.option('-t', default=None, help='file title')
 def read(t):
-    user = login()
-    if t == None:
+    if not t:
         t = input(click.style('file title_', fg='green'))
-
-
-    click.echo(read_file(t, user))
+    menu_read(t, login())
 
 
 @main.command()
 @click.option('-t', default=None, help='file title')
 def edit(t):
-    user = login()
-    if t == None:
+    if not t:
         t = input(click.style('file title_', fg='green'))
-
-    click.echo(read_file(t, user))
-    newText = input('newfile_')
-    edit_file(newText, t, user)
+    menu_edit(t, login())
 
 
 @main.command()
 @click.option('-t', default=None, help='file title')
 def delete(t):
-    user = login()
-    if t == None:
+    if not t:
         t = input(click.style('file title_', fg='green'))
-
-    click.echo(read_file(t, user))
-    if input('d_to_delete_') == 'd':
-        edit_file('', t, user)
+    menu_delete(t, login())

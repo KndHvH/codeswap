@@ -1,8 +1,8 @@
-from service.create_db import create_db, FileAlreadyExists
+from service.text.create_db import create_db, FileAlreadyExists
 import os
 import json
 import pytest
-from service.managejson import get_json, get_file
+from service.text.manage_json import get_json, get_file
 scriptPath = os.path.dirname(__file__)
 
 

@@ -1,6 +1,6 @@
 
 from service.text.get_key import get_key
-from service.managejson import *
+from service.text.manage_json import *
 from service.features.add import add_file
 
 

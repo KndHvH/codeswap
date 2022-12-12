@@ -8,7 +8,7 @@ class FileAlreadyExists(Exception):
 
 
 def create_db():
-    relPath = '../database/db.json'
+    relPath = '../../database/db.json'
     filepath = os.path.join(scriptPath, relPath)
 
     create_foulder()
@@ -23,7 +23,7 @@ def create_db():
             json.dump({'code':[]}, file)
 
 def create_foulder():
-    relPath = '../database'
+    relPath = '../../database'
     filepath = os.path.join(scriptPath, relPath)
 
     if not os.path.exists(filepath):

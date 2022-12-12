@@ -1,5 +1,5 @@
-from service.managejson import get_json
-from service.bin import *
+from service.text.manage_json import get_json
+from service.text.bin import *
 
 
 def get_key(title, user):

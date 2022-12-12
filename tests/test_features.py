@@ -1,7 +1,7 @@
 from service.features.add import add_file
 from service.features.read import read_file
-from service.managejson import *
-from service.text.title_verificator import title_verif
+from service.text.manage_json import *
+from service.text.title_checker import title_verif
 
 
 import os
