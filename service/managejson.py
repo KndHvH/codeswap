@@ -10,6 +10,10 @@ def save_json(dict, replace=False):
 
     files = [] if files == None else files['code']
 
+    for file in files:
+        if file['title'] == dict['title']:
+            replace = True
+
     if replace:
         files = delete(files, dict)
 
