@@ -1,7 +1,6 @@
-import click
 
 from service.text.swap import swap
-from service.bin import *
+from service.text.bin import *
 
 
 def add_file(master, password, title, user):

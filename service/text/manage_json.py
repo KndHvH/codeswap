@@ -1,4 +1,4 @@
-from service.create_db import create_db
+from service.text.create_db import create_db
 from service.features.delete import delete
 import json
 import os
@@ -22,7 +22,7 @@ def save_json(dict, replace=False):
 
     full_file = {'code': files}
 
-    relPath = '../database/db.json'
+    relPath = '../../database/db.json'
     filepath = os.path.join(scriptPath, relPath)
     with open(filepath, 'w') as outfile:
         json.dump(full_file, outfile)
@@ -31,7 +31,7 @@ def save_json(dict, replace=False):
 def get_json():
     for i in range(0, 2):
         try:
-            relPath = '../database/db.json'
+            relPath = '../../database/db.json'
             filepath = os.path.join(scriptPath, relPath)
             with open(filepath, "r") as file:
                 return json.load(file)

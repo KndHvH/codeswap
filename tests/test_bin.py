@@ -1,6 +1,6 @@
 
 
-from service.bin import *
+from service.text.bin import *
 
 class TestClass:
     
