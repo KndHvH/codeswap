@@ -1,6 +1,6 @@
 
-from text.swap import swap
-from text.bin import *
+from service.text.swap import swap
+from service.text.bin import *
 
 
 def add_file(master, password, title, user):

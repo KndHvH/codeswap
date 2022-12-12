@@ -10,7 +10,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'cswap = service.main:main',
+            'cswap = main:main',
         ],
     },
 )

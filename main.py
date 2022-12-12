@@ -2,8 +2,8 @@
 import click
 
 
-from menu.menu_features import *
-from login import login
+from vapp.menu.menu_features import *
+from vapp.login import login
 
 
 @click.group()
