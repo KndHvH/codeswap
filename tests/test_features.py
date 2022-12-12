@@ -121,6 +121,6 @@ class TestClass:
         create_db()
 
         save_json(entry)
-        save_json(entry2, replace=True)
+        save_json(entry2)
 
         assert expect == get_json()['code']
