@@ -9,6 +9,6 @@ def read_file(title, user):
     if key != None:
         file = get_file(title)
 
-        master = swap(file, key)
-
-        return master
+        for i, line in enumerate(file):
+            file[i] = swap(line, key)
+        return file

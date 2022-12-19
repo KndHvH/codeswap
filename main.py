@@ -15,6 +15,7 @@ def main():
 @click.option('-t', default=None, help='file title')
 def add(t):
     if not t:
+        #TODO fix windows color, input to other method
         t = input(click.style('file title_', fg='green'))
     menu_add(t, login())
 
