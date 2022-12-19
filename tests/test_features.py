@@ -12,7 +12,7 @@ class TestClass:
 
     def test_when_add_recieve_text_return_json(self):
 
-        text = 'text'
+        text = ['text']
         password = 'rtef'
         title = 'test'
         user = int('1'*300)
@@ -24,7 +24,7 @@ class TestClass:
 
     def test_when_receive_json_create_file(self):
 
-        entry = {'title': 'test2', 'file': 'rfxr'}
+        entry = {'title': 'test2', 'file': ['rfxr']}
 
         save_json(entry)
 
@@ -34,28 +34,31 @@ class TestClass:
 
     def test_when_add_text_create_file_and_read_file(self):
 
-        entry = 'text'
+        entry = ['text']
+        correct = ['text']
+
         title = 'test3'
-        password = 'abcdefghij'
+        password = 'tbcd'
         user = int('1'*300)
 
         json = add_file(entry, password, title, user)
+
         save_json(json)
 
         data = read_file(title, user)
 
-        assert data == entry
+        assert data == correct
 
     def test_when_add_receive_less_300_user_return_json(self):
 
         entry_user = 1233
         expect = {'title': 'None', 'user': 'None', 'file': 'None'}
 
-        assert expect == add_file('text', 'pass', 'title', entry_user)
+        assert expect == add_file(['text'], 'pass', 'title', entry_user)
 
     def test_when_title_verif_receive_test4_already_created_return_false(self):
 
-        entry = {'title': 'test4', 'file': 'rfxr'}
+        entry = {'title': 'test4', 'file': ['rfxr']}
         expect = False
 
         save_json(entry)
