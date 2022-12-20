@@ -117,8 +117,9 @@ class TestClass:
 
         relPath = '../database/db.json'
         filepath = os.path.join(scriptPath, relPath)
-
-        os.remove(filepath)
+        
+        if os.path.exists(filepath):
+            os.remove(filepath)
 
         create_db()
 
