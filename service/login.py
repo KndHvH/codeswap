@@ -1,4 +1,4 @@
-import getpass
+
 import click
 
 
@@ -6,7 +6,7 @@ def login():
     while True:
         try:
 
-            user = int(getpass.getpass(click.style('password_', fg='red')))
+            user = int(click.prompt(click.style('password_', fg='red'),hide_input=True))
 
             if len(str(user)) < 2:
                 raise ValueError

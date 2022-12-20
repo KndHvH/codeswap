@@ -21,10 +21,6 @@ def menu_read(title, user):
 
 
 def menu_edit(title, user):
-    file = read_file(title, user)
-    for line in file:
-        click.echo(line)
-
     edit_file(input_file(), title, user)
 
 
