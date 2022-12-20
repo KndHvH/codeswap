@@ -4,6 +4,7 @@ import click
 
 from service.menu_features import *
 from service.login import login
+from service.version import version_number
 
 
 @click.group()
@@ -45,3 +46,8 @@ def delete(t):
         t = click.prompt(click.style(
             'file title_', fg='blue'), prompt_suffix='')
     menu_delete(t, login())
+
+
+@main.command()
+def version():
+    click.echo(f'v{version_number()}')
