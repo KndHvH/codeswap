@@ -158,15 +158,15 @@ Então a palavra <span style="color:cyan">Banana</span> ficaria <span style="col
 Depois da criação de uma key, ela é transformada em Binário, e depois passa por um processo onde é feita uma contagem dos '0' e '1' para dar origem a outro número, como mostra o exemplo:
  
  
-key -> <span style="color:green">a</span>
- 
-key em Binário -> <span style="color:green">01100001</span>
- 
-Contagem de 0 e 1 ->  <span style="color:green">10 21 40 11</span>
- 
-Separado em 0 e depois 1 ->  <span style="color:green">10 40 | 21 11</span>
- 
-Retirada de números desnecessários e é colocado um divisor ->  <span style="color:green">14021</span>
+    key -> a
+    
+    key em Binário -> 01100001
+    
+    Contagem de 0 e 1 ->  10 21 40 11
+    
+    Separado em 0 e depois 1 ->  10 40 | 21 11
+    
+    Retirada de números desnecessários e é colocado um divisor ->  14021
  
  
 Por último, esse novo número é multiplicado pela senha que o usuário inseriu, e então guardada no banco de dados junto do texto criptografado.
