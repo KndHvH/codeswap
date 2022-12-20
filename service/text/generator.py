@@ -4,7 +4,7 @@ from service.text.title_checker import title_verif
 
 def genCode() -> str:
     alphPool = 'abcdefghijklmnopqrstuvwxyz'  # 26
-    numPool = '0123456789!@#$%^&*\-,.?:;\'\"()<> '  # 32
+    numPool = '0123456789!@#$%^&*\-,.?:;<>+_\'\"()\n/ '  # 32
     upperPool = alphPool.upper()  # 26
 
     pool = list(alphPool + upperPool + numPool)

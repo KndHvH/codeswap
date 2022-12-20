@@ -16,12 +16,12 @@ def edit_file(title, user, delete=False):
 
         if master == None:
             master = file
-
-        key = get_key(title, user)
-
-        json = add_file(master, key, title, user)
-
     else:
-        json = {'title': title, 'user': user, 'file': ''}
+        master = ''
+        
+    key = get_key(title, user)
+
+    json = add_file(master, key, title, user)
+
 
     save_json(json, replace=True)

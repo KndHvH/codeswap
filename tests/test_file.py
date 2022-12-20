@@ -14,7 +14,8 @@ class TestClass:
         relPath = '../database/db.json'
         filepath = os.path.join(scriptPath, relPath)
 
-        os.remove(filepath)
+        if os.path.exists(filepath):
+            os.remove(filepath)
 
         create_db()
 
@@ -34,7 +35,8 @@ class TestClass:
         relPath = '../database/db.json'
         filepath = os.path.join(scriptPath, relPath)
 
-        os.remove(filepath)
+        if os.path.exists(filepath):
+            os.remove(filepath)
 
         assert get_json() != None
 
@@ -43,6 +45,7 @@ class TestClass:
         relPath = '../database/db.json'
         filepath = os.path.join(scriptPath, relPath)
 
-        os.remove(filepath)
+        if os.path.exists(filepath):
+            os.remove(filepath)
 
         assert get_file('title') == 'None'
