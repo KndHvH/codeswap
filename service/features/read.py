@@ -7,8 +7,7 @@ from service.text.manage_json import *
 def read_file(title, user):
     key = get_key(title, user)
     if key != None:
+
         file = get_file(title)
 
-        for i, line in enumerate(file):
-            file[i] = swap(line, key)
-        return file
+        return swap(file, key)

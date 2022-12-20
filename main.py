@@ -2,7 +2,7 @@
 import click
 
 
-from service.menu.menu_features import *
+from service.menu_features import *
 from service.login import login
 
 
@@ -15,8 +15,8 @@ def main():
 @click.option('-t', default=None, help='file title')
 def add(t):
     if not t:
-        #TODO fix windows color, input to other method
-        t = click.prompt(click.style('file title_', fg='blue'))
+        t = click.prompt(click.style(
+            'file title_', fg='blue'), prompt_suffix='')
     menu_add(t, login())
 
 
@@ -24,7 +24,8 @@ def add(t):
 @click.option('-t', default=None, help='file title')
 def read(t):
     if not t:
-        t = click.prompt(click.style('file title_', fg='blue'))
+        t = click.prompt(click.style(
+            'file title_', fg='blue'), prompt_suffix='')
     menu_read(t, login())
 
 
@@ -32,7 +33,8 @@ def read(t):
 @click.option('-t', default=None, help='file title')
 def edit(t):
     if not t:
-        t = click.prompt(click.style('file title_', fg='blue'))
+        t = click.prompt(click.style(
+            'file title_', fg='blue'), prompt_suffix='')
     menu_edit(t, login())
 
 
@@ -40,5 +42,6 @@ def edit(t):
 @click.option('-t', default=None, help='file title')
 def delete(t):
     if not t:
-        t = click.prompt(click.style('file title_', fg='blue'))
+        t = click.prompt(click.style(
+            'file title_', fg='blue'), prompt_suffix='')
     menu_delete(t, login())

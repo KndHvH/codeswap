@@ -3,10 +3,10 @@ from service.text.swap import swap
 from service.text.bin import *
 
 
-def add_file(master: list, password, title, user, test=False):
+def add_file(master, password, title, user, test=False):
 
-    for i, line in enumerate(master):
-        master[i] = swap(line, password)
+    
+    master = swap(master, password)
 
     password = ':' + password
 

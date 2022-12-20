@@ -34,8 +34,7 @@ class TestClass:
 
     def test_when_add_text_create_file_and_read_file(self):
 
-        entry = ['text']
-        correct = ['text']
+        entry = 'text'
 
         title = 'test3'
         password = 'tbcd'
@@ -47,7 +46,7 @@ class TestClass:
 
         data = read_file(title, user)
 
-        assert data == correct
+        assert data == entry
 
     def test_when_add_receive_less_300_user_return_json(self):
 
