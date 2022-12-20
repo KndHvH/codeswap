@@ -49,5 +49,12 @@ def delete(t):
 
 
 @main.command()
+def list():
+    click.secho('titles_', fg='blue')
+    for title in menu_list_files():
+        click.echo(title)
+
+
+@main.command()
 def version():
     click.echo(f'v{version_number()}')
