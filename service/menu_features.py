@@ -1,6 +1,5 @@
 import click
 
-from service.input import input_file
 from service.text.generator import genCode
 from service.features.add import add_file
 from service.features.read import read_file
@@ -9,25 +8,20 @@ from service.text.manage_json import save_json
 
 
 def menu_add(title, user):
-
-    json = add_file(input_file(), genCode(), title, user)
+    json = add_file(click.edit(), genCode(), title, user)
     save_json(json)
 
 
 def menu_read(title, user):
-    file = read_file(title, user)
-    for line in file:
-        click.echo(line)
+    click.echo(read_file(title, user))
 
 
 def menu_edit(title, user):
-    edit_file(input_file(), title, user)
+    edit_file(title, user)
 
 
 def menu_delete(title, user):
-    file = read_file(title, user)
-    for line in file:
-        click.echo(line)
+    click.echo(read_file(title, user))
 
-    if input('d_to_delete_') == 'd':
-        edit_file('', title, user)
+    if click.confirm(click.style('confirm delete?', bg='red', fg='white'), prompt_suffix=''):
+        edit_file(title, user, delete=True)
