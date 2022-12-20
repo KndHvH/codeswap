@@ -16,7 +16,7 @@ def main():
 def add(t):
     if not t:
         #TODO fix windows color, input to other method
-        t = input(click.style('file title_', fg='green'))
+        t = click.prompt(click.style('file title_', fg='blue'))
     menu_add(t, login())
 
 
@@ -24,7 +24,7 @@ def add(t):
 @click.option('-t', default=None, help='file title')
 def read(t):
     if not t:
-        t = input(click.style('file title_', fg='green'))
+        t = click.prompt(click.style('file title_', fg='blue'))
     menu_read(t, login())
 
 
@@ -32,7 +32,7 @@ def read(t):
 @click.option('-t', default=None, help='file title')
 def edit(t):
     if not t:
-        t = input(click.style('file title_', fg='green'))
+        t = click.prompt(click.style('file title_', fg='blue'))
     menu_edit(t, login())
 
 
@@ -40,5 +40,5 @@ def edit(t):
 @click.option('-t', default=None, help='file title')
 def delete(t):
     if not t:
-        t = input(click.style('file title_', fg='green'))
+        t = click.prompt(click.style('file title_', fg='blue'))
     menu_delete(t, login())
