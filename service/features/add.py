@@ -14,4 +14,4 @@ def add_file(master, password, title, user, test=False):
 
     if len(str(user)) > 255 or test:
         return {'title': title, 'user': user, 'file': master}
-    return {'title': 'None', 'user': 'None', 'file': 'None'}
+    return {'title': '', 'user': '', 'file': ''}
