@@ -174,11 +174,9 @@ Por último, esse novo número é multiplicado pela senha que o usuário inseriu
 E por isso é impossível ler o arquivo sem a senha, porque sem a senha não é possível transformar o número em binário, sem o número em binário não é possível descobrir a key, e sem a key não é possível descriptografar o texto corretamente.
  
 ## Próximos Passos:
-  - feat: list files
   - feat: edit password
   - feat: backup
   - feat: interface command
-  - feat: show version
   - feat: ask for update
   - fix: read, edit, delete, non existant file
 
