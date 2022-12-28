@@ -19,4 +19,4 @@ def login():
             return int(user)
         except ValueError:
             click.secho('error!', bg='red', fg='white')
-            click.echo('must be at leat a 2 digits password_')
+            click.echo('must be at least a 2 digits password_')
