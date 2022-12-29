@@ -18,7 +18,8 @@ def update():
 
     os.chdir(wd)
 
-    update_verif()
+    if update_verif():
+        click.secho('app updated successfully', bg='blue', fg='white')
 
 
 def update_verif():
@@ -33,8 +34,7 @@ def update_verif():
 
         want_update(new)
     
-    else:
-        click.secho('app currently updated', bg='blue', fg='white')
+        return True 
 
 
 def want_update(new):
