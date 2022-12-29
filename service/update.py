@@ -6,7 +6,7 @@ import click
 from service.version import version_number
 
 
-def update():
+def update(new):
 
     wd = os.getcwd()
     os.chdir(os.path.dirname(__file__))
@@ -18,29 +18,23 @@ def update():
 
     os.chdir(wd)
 
-    if update_verif():
+    if new == version_number():
         click.secho('app updated successfully', bg='blue', fg='white')
-
+    else:
+        click.secho('app update failed', bg='red', fg='white')
 
 def update_verif():
+    new = req.get("https://kndhvh.github.io/codeswap.json").json()['codeswap']
 
-    new = req.get("https://kndhvh.github.io/codeswap.json")
-    
-    new = new.json()['codeswap']
-
-    current = version_number()
-
-    if new != current:
+    if new != version_number():
 
         want_update(new)
-    
-        return True 
 
 
 def want_update(new):
 
-    click.secho('new version avaliable:', bg='red', fg='white')
+    click.secho('new version avaliable:', bg='blue', fg='white')
     click.secho(f'remote: v{new}')
     click.secho(f'local: v{version_number()}')
     if click.confirm(click.style('want to update?'), prompt_suffix=''):
-        update()
+        update(new)
