@@ -56,4 +56,6 @@ def list():
 
 @main.command(short_help='show current version')
 def version():
+    import sys
+    print(sys.path)
     click.echo(f'v{version_number()}')
