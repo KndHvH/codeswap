@@ -11,10 +11,19 @@ from service.version import version_number
 
 @click.group()
 def main():
+    """codeswap:
+
+    \b
+    create or edit your file with the 'file' command.
+    delete your files with the 'delete' command.
+    you can use the '-t' option to input the file title through the terminal.
+
+
+    """
     pass
 
 
-@main.command()
+@main.command(short_help='create or edit a file')
 @click.option('-t', default=None, help='file title')
 def file(t):
     if not t:
@@ -23,7 +32,7 @@ def file(t):
     edit_file(t, login())
 
 
-@main.command()
+@main.command(short_help='delete a file')
 @click.option('-t', default=None, help='file title')
 def delete(t):
     if not t:
@@ -35,7 +44,7 @@ def delete(t):
         edit_file(t, login(), delete=True)
 
 
-@main.command()
+@main.command(short_help='list all files titles')
 def list():
     click.secho('titles_', fg='blue')
 
@@ -45,6 +54,6 @@ def list():
         click.echo(file['title'])
 
 
-@main.command()
+@main.command(short_help='show current version')
 def version():
     click.echo(f'v{version_number()}')
