@@ -1,18 +1,22 @@
 
 import click
+from service.text.str_to_int import str_to_int
 
 
 def login():
     while True:
         try:
 
-            user = int(click.prompt(click.style('password_', fg='red'),
-                       hide_input=True, prompt_suffix=''))
+            user = click.prompt(click.style('password_', fg='red'),
+                       hide_input=True, prompt_suffix='')
 
-            if len(str(user)) < 2:
+            
+            if len(user) < 2:
                 raise ValueError
 
-            return user
+            user = str_to_int(user)
+
+            return int(user)
         except ValueError:
             click.secho('error!', bg='red', fg='white')
-            click.echo('must be at leat a 2 digits number_')
+            click.echo('must be at least a 2 digits password_')
