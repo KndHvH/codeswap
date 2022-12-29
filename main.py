@@ -12,6 +12,7 @@ from service.version import version_number
 
 update_verif()
 
+
 @click.group()
 def main():
     """codeswap:
@@ -59,6 +60,6 @@ def list():
 
 @main.command(short_help='show current version')
 def version():
-    
-    click.echo('install dir:',os.path.dirname(__file__))
+
+    click.echo(f'install dir: {os.path.dirname(__file__)}')
     click.echo(f'v{version_number()}')
