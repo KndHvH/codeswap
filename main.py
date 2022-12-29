@@ -1,13 +1,16 @@
 
 import click
+import os
 
 from service.features.read import read_file
 from service.features.edit import edit_file
 from service.text.manage_json import get_json
 
 from service.login import login
+from service.update import update_verif
 from service.version import version_number
 
+update_verif()
 
 @click.group()
 def main():
@@ -56,6 +59,6 @@ def list():
 
 @main.command(short_help='show current version')
 def version():
-    import os
-    print(os.path.dirname(__file__))
+    
+    click.echo('install dir:',os.path.dirname(__file__))
     click.echo(f'v{version_number()}')
