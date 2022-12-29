@@ -1,8 +1,10 @@
 
 import click
 
+from service.features.read import read_file
+from service.features.edit import edit_file
+from service.text.manage_json import get_json
 
-from service.menu_features import *
 from service.login import login
 from service.version import version_number
 
@@ -14,29 +16,11 @@ def main():
 
 @main.command()
 @click.option('-t', default=None, help='file title')
-def add(t):
+def file(t):
     if not t:
         t = click.prompt(click.style(
             'file title_', fg='blue'), prompt_suffix='')
-    menu_add(t, login())
-
-
-@main.command()
-@click.option('-t', default=None, help='file title')
-def read(t):
-    if not t:
-        t = click.prompt(click.style(
-            'file title_', fg='blue'), prompt_suffix='')
-    menu_read(t, login())
-
-
-@main.command()
-@click.option('-t', default=None, help='file title')
-def edit(t):
-    if not t:
-        t = click.prompt(click.style(
-            'file title_', fg='blue'), prompt_suffix='')
-    menu_edit(t, login())
+    edit_file(t, login())
 
 
 @main.command()
@@ -45,14 +29,20 @@ def delete(t):
     if not t:
         t = click.prompt(click.style(
             'file title_', fg='blue'), prompt_suffix='')
-    menu_delete(t, login())
+    click.echo(read_file(t, login()))
+
+    if click.confirm(click.style('confirm delete?', bg='red', fg='white'), prompt_suffix=''):
+        edit_file(t, login(), delete=True)
 
 
 @main.command()
 def list():
     click.secho('titles_', fg='blue')
-    for title in menu_list_files():
-        click.echo(title)
+
+    files = get_json()['code']
+
+    for file in files:
+        click.echo(file['title'])
 
 
 @main.command()
