@@ -10,6 +10,7 @@ def update():
 
     wd = os.getcwd()
     os.chdir(os.path.dirname(__file__))
+    os.chdir('..')
 
     subprocess.run(["git", "fetch"])
     subprocess.run(["git", "pull"])
