@@ -3,12 +3,11 @@ from service.text.bin import *
 
 
 def get_key(title, user):
-    file = get_json()
-    file = file['code']
+    files = get_json()['code']
 
-    for i in file:
-        if i['title'] == title:
-            key = bin_to_code(count_to_bin(i['user']//user))
+    for file in files:
+        if file['title'] == title:
+            key = bin_to_code(count_to_bin(file['user']//user))
 
             return key[1:]
     return None

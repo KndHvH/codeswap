@@ -3,9 +3,8 @@ from service.text.swap import swap
 from service.text.bin import *
 
 
-def add_file(master, password, title, user, test=False):
+def add_file(master, password, title, user, test=False) -> dict:
 
-    
     master = swap(master, password)
 
     password = ':' + password
