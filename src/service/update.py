@@ -22,11 +22,14 @@ def update(new):
     
 
 def update_verif():
-    new = req.get("https://kndhvh.github.io/codeswap.json").json()['codeswap']
+    try:
+        new = req.get("https://kndhvh.github.io/codeswap.json").json()['codeswap']
 
-    if new != version_number():
+        if new != version_number():
 
-        want_update(new)
+            want_update(new)
+    except:
+        pass
 
 
 def want_update(new):
