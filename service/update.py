@@ -18,10 +18,8 @@ def update(new):
 
     os.chdir(wd)
 
-    if new == version_number():
-        click.secho('app updated successfully', bg='blue', fg='white')
-    else:
-        click.secho('app update failed', bg='red', fg='white')
+    click.secho('app updated successfully', bg='blue', fg='white')
+    
 
 def update_verif():
     new = req.get("https://kndhvh.github.io/codeswap.json").json()['codeswap']

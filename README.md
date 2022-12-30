@@ -6,11 +6,27 @@ Consiste em um programa que tem como função principal armazenar localmente tex
 ![](codeswap-showcase.gif)
 
 ## Conteúdo
-* [Sobre](#Sobre)
-* [Instalação](#Instalação)
-* [Funcionalidades](#Funcionalidades)
-* [Como Funciona?](#Como-Funciona?)
-* [Próximos Passos](#Próximos-Passos)
+- [CodeSwap](#codeswap)
+  - [Conteúdo](#conteúdo)
+  - [Sobre](#sobre)
+  - [Instalação](#instalação)
+  - [Funcionalidades](#funcionalidades)
+    - [Adicione](#adicione)
+      - [Arquivo exemplo](#arquivo-exemplo)
+      - [Contexto](#contexto)
+      - [Primeira vez submetido](#primeira-vez-submetido)
+      - [Segunda vez submetido](#segunda-vez-submetido)
+    - [Leia](#leia)
+      - [Exemplo](#exemplo)
+    - [Edite](#edite)
+    - [Delete](#delete)
+    - [Liste](#liste)
+    - [Backup](#backup)
+  - [Como Funciona?](#como-funciona)
+    - [Inspiração](#inspiração)
+    - [Key](#key)
+    - [Senha](#senha)
+  - [Próximos Passos](#próximos-passos)
 
 ## Sobre
 
@@ -23,14 +39,14 @@ Outra questão positiva, é que não existe uma senha "certa" ou "errada", a ló
 Se quiser saber mais sobre as Funcionalidades ou sobre as Lógicas de Codificação, eu pretendo compartilhar tudo nesse 
 mesmo documento.
 
-## Instalação:
+## Instalação
 
     $ git clone https://www.github.com/kndhvh/codeswap.git
     $ cd codeswap
     $ pip install -e .
 
-## Funcionalidades:
-### Adicionar um arquivo
+## Funcionalidades
+### Adicione
 
 Adicione um arquivo na base de dados, precisa criar um título e em sequida de uma senha.
 
@@ -38,12 +54,12 @@ Adicione um arquivo na base de dados, precisa criar um título e em sequida de u
     or
     $ cswap file -t titulo_do_arquivo
 
-#### Arquivo exemplo:
+#### Arquivo exemplo
  
  
 <span style="color:cyan">*"Zenit Polar é um sistema simples de criptografia, que consiste na substituição das letras de uma palavra pela sua correspondente no nome ZENIT POLAR."*</span>
 
-#### Contexto:
+#### Contexto
 
 Primeiramente insira uma senha de sua escolha. Em seguida escreva o texto no editor que deseja armazenar.
 Cada vez que um texto é submetido, uma chave é gerada aleatoriamente, então o texto é criptografado com base na chave, a chave então é criptografada com base na senha que o usuário escolheu e então no banco de dados é armazenado o título, a chave e o texto.
@@ -51,7 +67,7 @@ Cada vez que um texto é submetido, uma chave é gerada aleatoriamente, então o
 Podemos ver no exemplo a seguir que o mesmo texto é submetido 2 vezes com a mesma senha, gerando 2 chaves aleatórias em cada situação,
 consequentemente gerando textos criptografados completamente distintos e completamente dependentes da senha do usuário.
 
-#### Primeira vez submetido:
+#### Primeira vez submetido
 
 Terminal:
 
@@ -72,7 +88,7 @@ Json File:
         ]
     }
 
-#### Segunda vez submetido:
+#### Segunda vez submetido
 
 Terminal:
 
@@ -99,7 +115,7 @@ Json File:
     }
     
  
-### Lendo um arquivo:
+### Leia
  
 Leia um arquivo na base de dados, precisa inserir o nome do arquivo e a senha correspondente no mesmo comando usado anteriormente. Se colocar a senha errada, o programa irá trazer o documento da forma que ele está na base de dados, porem se for a senha certa, ele ira te mostrar o arquivo como gostaria.
 
@@ -107,7 +123,7 @@ Leia um arquivo na base de dados, precisa inserir o nome do arquivo e a senha co
     or
     $ cswap file -t titulo_do_arquivo
  
-#### Exemplo:
+#### Exemplo
  
 Senha certa:
     
@@ -124,11 +140,11 @@ Senha errada:
     Lt'yevflojbv\u00e9vw4vOyOet4jvOy4zotOvDtv3byzel bjPyj>v0wtv3l'OyOetv'jvOwrOeyewy\u00e7\u00e3lvDjOvotebjOvDtvw4jvzjoj bjvztojvOwjv3lbbtOzl'Dt'etv'lv'l4tvLNE)8vfsZGhg
  
  
-### Editando um arquivo
+### Edite
 
 Utilize o mesmo comando usado para adicionar e ler um documento, faça as alterações necessárias no editor e salve seu arquivo normalmente. O arquivo apenas sera sobrescrevido se a senha for correta.
 
-### Deletando um arquivo
+### Delete
 
 Apague um arquivo na base de dados da seguinte forma:
 
@@ -138,13 +154,13 @@ Apague um arquivo na base de dados da seguinte forma:
 
 Você precisará inserir o título do arquivo que deseja excluir, bem como sua senha. se a senha estiver incorreta, o arquivo não será removido, caso contrário, será removido com sucesso.
 
-### Listando todos os arquivos
+### Liste
 
 Liste os arquivos presentes localmente da seguinte forma:
 
     $ cswap list
 
-### Fazendo Backup de todos os arquivos guardados
+### Backup
 
 Com os seguintes comandos você pode exportar ou importar um arquivo Json com todas as informações necessárias para ler os arquivos de qualquer dispositivo, se você tiver a senha é claro ;)
 
@@ -158,7 +174,7 @@ Se você importar um documento que já existe localmente, o programa ira ignorar
 ## Como Funciona?
  
  
-### Inspiração:
+### Inspiração
  
 A inspiração do projeto foi um antigo sistema de criptografia chamado Zenit Polar. O sistema funciona de uma forma, em que a primeira letra de uma das duas palavras zenit e polar, sempre é trocada pela primeira letra da outra, a segunda é trocada pela segunda e assim por diante. Como mostra o esquema a seguir:
  
@@ -171,7 +187,7 @@ Para um texto ser criptografado, cada letra deve ser trocada pela sua equivalent
  
 Então a palavra <span style="color:cyan">Banana</span> ficaria <span style="color:cyan">Bilili</span> em Zenit Polar.
  
-### Key:
+### Key
  
 Cada vez que um texto é submetido, uma key como esta é criada:
  
@@ -187,7 +203,7 @@ E usa o modelo do Zenit Polar para trocar as letras do texto submetido, como mos
 Então a palavra <span style="color:cyan">Banana</span> ficaria <span style="color:cyan"> g5g5g</span> com essa Key.
  
  
-### Senha:
+### Senha
  
  
  
@@ -196,7 +212,7 @@ Depois da criação de uma key, ela é transformada em Binário, e depois passa 
  
     key -> a
     
-    key em Binário -> 01100001
+    key em Binário -> **01100001**
     
     Contagem de 0 e 1 ->  10 21 40 11
     
@@ -209,7 +225,7 @@ Por último, esse novo número é multiplicado pela senha que o usuário inseriu
  
 E por isso é impossível ler o arquivo sem a senha, porque sem a senha não é possível transformar o número em binário, sem o número em binário não é possível descobrir a key, e sem a key não é possível descriptografar o texto corretamente.
  
-## Próximos Passos:
+## Próximos Passos
   - feat: edit password
   - feat: interface command
   - fix: read, edit, delete, non existant file
