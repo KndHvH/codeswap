@@ -55,9 +55,10 @@ def load_database():
             local_file_list.append(remote_file)
 
     if warning:
-        click.secho('if you want to replace an local file content,', bg='yellow', fg='white')
-        click.secho('you must first delete the local version, use', bg='yellow', fg='white')
-        click.secho('\'cswap delete -t ~filename\'', bg='yellow', fg='white')
+        click.secho('Warning!', bg='yellow', fg='black')
+        click.secho('if you want to replace an local file content', fg='yellow')
+        click.secho('you must first delete the local version, use', fg='yellow')
+        click.secho('\'cswap delete -t ~filename\'', fg='yellow')
         
     save_on_dbjson_file(local_file_list)
 
