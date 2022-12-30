@@ -20,6 +20,9 @@ def save_json(dict, replace=False):
     if dict['file'] != '':
         files.append(dict)
 
+    save_on_dbjson_file(files)
+
+def save_on_dbjson_file(files):
     full_file = {'code': files}
 
     relPath = '../../database/db.json'
@@ -28,12 +31,14 @@ def save_json(dict, replace=False):
         json.dump(full_file, outfile)
 
 
-def get_json():
+def local_path():
+    relPath = '../../database/db.json'
+    return os.path.join(scriptPath, relPath)
+
+def get_json(path=local_path()):
     for i in range(0, 2):
-        try:
-            relPath = '../../database/db.json'
-            filepath = os.path.join(scriptPath, relPath)
-            with open(filepath, "r") as file:
+        try:            
+            with open(path, "r") as file:
                 return json.load(file)
 
         except FileNotFoundError:
@@ -41,10 +46,11 @@ def get_json():
 
 
 def get_file(title):
-    file = get_json()
-    file = file['code']
+    file = get_json()['code']
 
     for i in file:
         if i['title'] == title:
             return i['file']
     return 'None'
+
+
