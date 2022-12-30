@@ -1,6 +1,7 @@
 
 import click
 import os
+from service.backup.backup import backup_database, load_database
 
 from service.features.read import read_file
 from service.features.edit import edit_file
@@ -63,3 +64,16 @@ def version():
 
     click.echo(f'install dir: {os.path.dirname(__file__)}')
     click.echo(f'v{version_number()}')
+
+
+@main.command(short_help='manage your db backup')
+@click.option('-b', required=True, type=click.Choice(['Save', 'Load'], case_sensitive=False))
+def backup(b):
+    match b:
+        case 'Save':
+            backup_database()
+            click.secho('database saved successfully!', bg='blue', fg='white')
+
+        case 'Load':
+            load_database()
+            click.secho('database loaded successfully!', bg='blue', fg='white')
