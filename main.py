@@ -9,10 +9,14 @@ from service.text.manage_json import get_json
 
 from service.login import login
 from service.update import update_verif
+from service.user import is_new_user
 from service.version import version_number
 
 update_verif()
-
+if is_new_user():
+    click.secho('Warning!', bg='yellow', fg='black')
+    click.secho('project still under development', fg='yellow')
+    click.secho('don\'t save any data you can\'t afford to lose', fg='yellow')
 
 @click.group()
 def main():
