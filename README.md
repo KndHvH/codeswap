@@ -30,21 +30,22 @@ mesmo documento.
     $ pip install -e .
 
 ## Funcionalidades:
-### Add
+### Adicionar um arquivo
 
-Adiciona um texto na base de dados, depende que o usuário coloque uma senha e dê ao seu texto um Título.
+Adicione um arquivo na base de dados, precisa criar um título e em sequida de uma senha.
 
-    $ cswap add
-    $ cswap add -t titulo_do_arquivo
+    $ cswap file
+    or
+    $ cswap file -t titulo_do_arquivo
 
-#### Texto exemplo:
+#### Arquivo exemplo:
  
  
 <span style="color:cyan">*"Zenit Polar é um sistema simples de criptografia, que consiste na substituição das letras de uma palavra pela sua correspondente no nome ZENIT POLAR."*</span>
 
 #### Contexto:
 
-Primeiramente insira uma senha de sua escolha. Em seguida escreva o texto que deseja armazenar.
+Primeiramente insira uma senha de sua escolha. Em seguida escreva o texto no editor que deseja armazenar.
 Cada vez que um texto é submetido, uma chave é gerada aleatoriamente, então o texto é criptografado com base na chave, a chave então é criptografada com base na senha que o usuário escolheu e então no banco de dados é armazenado o título, a chave e o texto.
 
 Podemos ver no exemplo a seguir que o mesmo texto é submetido 2 vezes com a mesma senha, gerando 2 chaves aleatórias em cada situação,
@@ -54,8 +55,9 @@ consequentemente gerando textos criptografados completamente distintos e complet
 
 Terminal:
 
-    $ cswap add -t zenit
+    $ cswap file -t zenit
     password_1234
+
     file_Zenit Polar é um sistema simples de criptografia, que consiste na substituição das letras de uma palavra pela sua correspondente no nome ZENIT POLAR.
 
 Json File:
@@ -74,8 +76,9 @@ Json File:
 
 Terminal:
 
-    $ cswap add -t zenit2     
+    $ cswap file -t zenit2     
     password_1234
+
     file_Zenit Polar é um sistema simples de criptografia, que consiste na substituição das letras de uma palavra pela sua correspondente no nome ZENIT POLAR.
 
 Json File:
@@ -96,29 +99,62 @@ Json File:
     }
     
  
-### Read:
+### Lendo um arquivo:
  
-lê um texto na base de dados, depende que o usuário coloque sua senha e o nome do arquivo. Se colocar a senha errada, o programa irá trazer o documento da forma que ele está na base de dados.
+Leia um arquivo na base de dados, precisa inserir o nome do arquivo e a senha correspondente no mesmo comando usado anteriormente. Se colocar a senha errada, o programa irá trazer o documento da forma que ele está na base de dados, porem se for a senha certa, ele ira te mostrar o arquivo como gostaria.
 
-    $ cswap read
-    $ cswap read -t titulo_do_arquivo
+    $ cswap file
+    or
+    $ cswap file -t titulo_do_arquivo
  
 #### Exemplo:
  
 Senha certa:
     
-    $ cswap read -t zenit
+    $ cswap file -t zenit
     password_1234
+
     Zenit Polar é um sistema simples de criptografia, que consiste na substituição das letras de uma palavra pela sua correspondente no nome ZENIT POLAR.
  
 Senha errada:
     
-    $ cswap read -t zenit
+    $ cswap file -t zenit
     password_4321
+
     Lt'yevflojbv\u00e9vw4vOyOet4jvOy4zotOvDtv3byzel bjPyj>v0wtv3l'OyOetv'jvOwrOeyewy\u00e7\u00e3lvDjOvotebjOvDtvw4jvzjoj bjvztojvOwjv3lbbtOzl'Dt'etv'lv'l4tvLNE)8vfsZGhg
  
  
- 
+### Editando um arquivo
+
+Utilize o mesmo comando usado para adicionar e ler um documento, faça as alterações necessárias no editor e salve seu arquivo normalmente. O arquivo apenas sera sobrescrevido se a senha for correta.
+
+### Deletando um arquivo
+
+Apague um arquivo na base de dados da seguinte forma:
+
+    $ cswap delete
+    or 
+    $ cswap delete -t titulo_do_arquivo
+
+Você precisará inserir o título do arquivo que deseja excluir, bem como sua senha. se a senha estiver incorreta, o arquivo não será removido, caso contrário, será removido com sucesso.
+
+### Listando todos os arquivos
+
+Liste os arquivos presentes localmente da seguinte forma:
+
+    $ cswap list
+
+### Fazendo Backup de todos os arquivos guardados
+
+Com os seguintes comandos você pode exportar ou importar um arquivo Json com todas as informações necessárias para ler os arquivos de qualquer dispositivo, se você tiver a senha é claro ;)
+
+    $ cswap backup -b save
+    $ cswap backup -b load
+
+Em ambos abrirá uma janela de arquivo, onde em 'save', você precisa selecionar onde deseja salvar o arquivo, e 'load', você deve selecionar o arquivo json que deseja importar, por padrão as janelas são abertas no caminho Desktop.
+
+Se você importar um documento que já existe localmente, o programa ira ignorar este documento para evitar sobrescrever os dados. Se você quiser fazer essa substituição, primeiro exclua a versão local e depois importe o json normalmente.
+
 ## Como Funciona?
  
  
@@ -175,9 +211,7 @@ E por isso é impossível ler o arquivo sem a senha, porque sem a senha não é 
  
 ## Próximos Passos:
   - feat: edit password
-  - feat: backup
   - feat: interface command
-  - feat: ask for update
   - fix: read, edit, delete, non existant file
 
 
