@@ -1,4 +1,4 @@
 
 
 def version_number():
-    return '1.0.11'
+    return '1.1'
