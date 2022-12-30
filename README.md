@@ -1,3 +1,8 @@
+# Readme Language
+
+ - [Portuguese](#README.md)
+ - [English](/README-en.md)
+
 # CodeSwap
 
 Este é um projeto pessoal para poder testar e por meu conhecimento dos recentes cursos realizados em prática.
@@ -6,6 +11,7 @@ Consiste em um programa que tem como função principal armazenar localmente tex
 ![](codeswap-showcase.gif)
 
 ## Conteúdo
+- [Readme Language](#readme-language)
 - [CodeSwap](#codeswap)
   - [Conteúdo](#conteúdo)
   - [Sobre](#sobre)
@@ -36,9 +42,6 @@ O grande diferencial do CodeSwap, é que o texto armazenado localmente é imposs
 Outra questão positiva, é que não existe uma senha "certa" ou "errada", a lógica do CodeSwap permite que o usuário tente ler um documento mesmo que a senha esteja incorreta, porém o texto que esse usuário irá ler, será o mesmo guardado no banco de dados que ainda não foi decifrado, uma vez que a senha é uma apenas uma engrenagem no funcionamento do programa como um todo!
 
 
-Se quiser saber mais sobre as Funcionalidades ou sobre as Lógicas de Codificação, eu pretendo compartilhar tudo nesse 
-mesmo documento.
-
 ## Instalação
 
     $ git clone https://www.github.com/kndhvh/codeswap.git
@@ -56,8 +59,7 @@ Adicione um arquivo na base de dados, precisa criar um título e em sequida de u
 
 #### Arquivo exemplo
  
- 
-<span style="color:cyan">*"Zenit Polar é um sistema simples de criptografia, que consiste na substituição das letras de uma palavra pela sua correspondente no nome ZENIT POLAR."*</span>
+*"Zenit Polar é um sistema simples de criptografia, que consiste na substituição das letras de uma palavra pela sua correspondente no nome ZENIT POLAR."*
 
 #### Contexto
 
@@ -185,7 +187,7 @@ A inspiração do projeto foi um antigo sistema de criptografia chamado Zenit Po
  
 Para um texto ser criptografado, cada letra deve ser trocada pela sua equivalente.
  
-Então a palavra <span style="color:cyan">Banana</span> ficaria <span style="color:cyan">Bilili</span> em Zenit Polar.
+Então a palavra *'Banana'* ficaria *'Bilili'* em Zenit Polar.
  
 ### Key
  
@@ -200,7 +202,7 @@ E usa o modelo do Zenit Polar para trocar as letras do texto submetido, como mos
 | w   | Z   | q   | c   | A   | Q   | Y   | *   | ... |
  
  
-Então a palavra <span style="color:cyan">Banana</span> ficaria <span style="color:cyan"> g5g5g</span> com essa Key.
+Então a palavra *'Banana'* ficaria *' g5g5g'* com essa Key.
  
  
 ### Senha
@@ -212,7 +214,7 @@ Depois da criação de uma key, ela é transformada em Binário, e depois passa 
  
     key -> a
     
-    key em Binário -> **01100001**
+    key em Binário -> 01100001
     
     Contagem de 0 e 1 ->  10 21 40 11
     
