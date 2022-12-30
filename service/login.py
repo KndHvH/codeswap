@@ -6,7 +6,6 @@ from service.text.str_to_int import str_to_int
 def login():
     while True:
         try:
-
             user = click.prompt(click.style('password_', fg='red'),
                        hide_input=True, prompt_suffix='')
 
