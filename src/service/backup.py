@@ -3,7 +3,8 @@ import shutil
 import os
 import click
 
-from service.text.manage_json import get_json, save_on_dbjson_file
+from src.service.manage_json import get_json, save_on_dbjson_file
+
 desktop = os.path.normpath(os.path.expanduser("~/Desktop"))
 scriptPath = os.path.dirname(__file__)
 
@@ -30,7 +31,7 @@ def backup_database():
 
     path = get_save_backup_path()
 
-    relPath = '../../database/db.json'
+    relPath = '../database/db.json'
     filepath = os.path.join(scriptPath, relPath)
 
     shutil.copy(filepath,path)

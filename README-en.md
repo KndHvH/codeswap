@@ -44,9 +44,9 @@ Another positive issue is that there is no "right" or "wrong" password, CodeSwap
 
 ## Installation
 
-    $ git clone https://www.github.com/kndhvh/codeswap.git
-    $ cd codeswap
-    $ pip install -e .
+    Make sure you have Python installed and added to the PATH!
+
+    $ pip install codeswap
 
 ## Functionalities
 ### Add
@@ -54,9 +54,9 @@ Another positive issue is that there is no "right" or "wrong" password, CodeSwap
 Add a file to the database, you will need to create a title and then a password.
 
 
-    $ cswap file
+    $ cs file
     or
-    $ cswap file -t file_title
+    $ cs file -t file_title
 
 #### Sample file
 
@@ -74,7 +74,7 @@ consequently generating completely different ciphertexts and completely dependen
 
 Terminal:
 
-    $ cswap file -t zenit
+    $ cs file -t zenit
     password_1234
 
     file_Zenit Polar is a simple encryption system, which consists of replacing the letters of a word by their corresponding name in the name ZENIT POLAR..
@@ -95,7 +95,7 @@ Json File:
 
 Terminal:
 
-    $ cswap file -t zenit2     
+    $ cs file -t zenit2     
     password_1234
 
     file_Zenit Polar is a simple encryption system, which consists of replacing the letters of a word by their corresponding name in the name ZENIT POLAR.
@@ -122,22 +122,22 @@ Json File:
  
 Read a file in the database, you need to enter the file name and the corresponding password in the same command used before. If you put the wrong password, the program will bring the document the way it is in the database, but if it's the right password, it will show you the file as you would like.
 
-    $ cswap file
+    $ cs file
     or
-    $ cswap file -t file_title
+    $ cs file -t file_title
  
 #### Example
  
 Correct password:
     
-    $ cswap file -t zenit
+    $ cs file -t zenit
     password_1234
 
     Zenit Polar is a simple encryption system, which consists of replacing the letters of a word by their corresponding name in the name ZENIT POLAR.
  
 Wrong password:
     
-    $ cswap file -t zenit
+    $ cs file -t zenit
     password_4321
 
     Lt'yevflojbv\u00e9vw4vOyOet4jvOy4zotOvDtv3byzel bjPyj>v0wtv3l'OyOetv'jvOwrOeyewy\u00e7\u00e3lvDjOvotebjOvDtvw4jvzjoj bjvztojvOwjv3lbbtOzl'Dt'etv'lv'l4tvLNE)8vfsZGhg
@@ -151,9 +151,9 @@ Use the same command used to add and read a document, make the necessary changes
 
 Delete a file in the database as follows:
 
-    $ cswap delete
+    $ cs delete
     or 
-    $ cswap delete -t file_title
+    $ cs delete -t file_title
 
 You will need to enter the title of the file you want to delete, as well as your password. if the password is incorrect, the file will not be removed, otherwise it will be removed successfully.
 
@@ -161,14 +161,14 @@ You will need to enter the title of the file you want to delete, as well as your
 
 List the files present locally as follows:
 
-    $ cswap list
+    $ cs list
 
 ### Backup
 
 With the following commands you can export or import a Json file with all the necessary information to read the files from any device, if you have the password of course ;)
 
-    $ cswap backup -b save
-    $ cswap backup -b load
+    $ cs backup -b save
+    $ cs backup -b load
 
 In both, a file window will open, where in 'save', you need to select where you want to save the file, and 'load', you must select the json file you want to import, by default the windows are opened in the Desktop path.
 

@@ -1,9 +1,12 @@
 
-from service.text.swap import swap
-from service.text.bin import *
 
 
-def add_file(master, password, title, user, test=False) -> dict:
+
+from src.service.binary import bin_to_count, code_to_bin
+from src.service.swap import swap
+
+
+def get_dict(master, password, title, user, test=False) -> dict:
 
     master = swap(master, password)
 

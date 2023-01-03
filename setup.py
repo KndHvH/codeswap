@@ -1,17 +1,26 @@
 from setuptools import setup, find_packages
-from service.version import version_number
+from src.service.version import get_version
+
 
 setup(
     name='codeswap',
-    version=version_number(),
+    version=get_version(),
+    license='MIT',
+    author='Matias Herklotz',
+    author_email='matherklotzz@gmail.com',
     packages=find_packages(),
+    url='https://www.github.com/kndhvh/codeswap',
     include_package_data=True,
     install_requires=[
-        'Click',
+        'click',
+        'requests',
+        'setuptools',
+
     ],
     entry_points={
         'console_scripts': [
-            'cswap = main:main',
+            'cs = src.main:main',
+            'cswap = src.main:main',
         ],
     },
 )

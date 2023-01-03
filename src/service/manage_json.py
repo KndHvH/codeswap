@@ -1,7 +1,9 @@
-from service.text.create_db import create_db
-from service.features.delete import delete
+
 import json
 import os
+
+from src.service.remove_file_from_list import delete
+from src.service.manage_bd import create_db
 scriptPath = os.path.dirname(__file__)
 
 
@@ -25,14 +27,14 @@ def save_json(dict, replace=False):
 def save_on_dbjson_file(files):
     full_file = {'code': files}
 
-    relPath = '../../database/db.json'
+    relPath = '../database/db.json'
     filepath = os.path.join(scriptPath, relPath)
     with open(filepath, 'w') as outfile:
         json.dump(full_file, outfile)
 
 
 def local_path():
-    relPath = '../../database/db.json'
+    relPath = '../database/db.json'
     return os.path.join(scriptPath, relPath)
 
 def get_json(path=local_path()):

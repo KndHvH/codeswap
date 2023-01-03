@@ -29,7 +29,6 @@ def bin_to_count(bin):
     except IndexError:
         result.append(f'{count}{byte}')
 
-    
     a = []
     b = []
     for i in result:

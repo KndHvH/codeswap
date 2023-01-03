@@ -1,6 +1,7 @@
 
 import click
-from service.text.str_to_int import str_to_int
+
+from src.service.str_to_int import str_to_int
 
 
 def login():
