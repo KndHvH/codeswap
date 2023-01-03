@@ -53,9 +53,9 @@ Outra questão positiva, é que não existe uma senha "certa" ou "errada", a ló
 
 Adicione um arquivo na base de dados, precisa criar um título e em sequida de uma senha.
 
-    $ cswap file
+    $ cs file
     or
-    $ cswap file -t titulo_do_arquivo
+    $ cs file -t titulo_do_arquivo
 
 #### Arquivo exemplo
  
@@ -73,7 +73,7 @@ consequentemente gerando textos criptografados completamente distintos e complet
 
 Terminal:
 
-    $ cswap file -t zenit
+    $ cs file -t zenit
     password_1234
 
     file_Zenit Polar é um sistema simples de criptografia, que consiste na substituição das letras de uma palavra pela sua correspondente no nome ZENIT POLAR.
@@ -94,7 +94,7 @@ Json File:
 
 Terminal:
 
-    $ cswap file -t zenit2     
+    $ cs file -t zenit2     
     password_1234
 
     file_Zenit Polar é um sistema simples de criptografia, que consiste na substituição das letras de uma palavra pela sua correspondente no nome ZENIT POLAR.
@@ -121,22 +121,22 @@ Json File:
  
 Leia um arquivo na base de dados, precisa inserir o nome do arquivo e a senha correspondente no mesmo comando usado anteriormente. Se colocar a senha errada, o programa irá trazer o documento da forma que ele está na base de dados, porem se for a senha certa, ele ira te mostrar o arquivo como gostaria.
 
-    $ cswap file
+    $ cs file
     or
-    $ cswap file -t titulo_do_arquivo
+    $ cs file -t titulo_do_arquivo
  
 #### Exemplo
  
 Senha certa:
     
-    $ cswap file -t zenit
+    $ cs file -t zenit
     password_1234
 
     Zenit Polar é um sistema simples de criptografia, que consiste na substituição das letras de uma palavra pela sua correspondente no nome ZENIT POLAR.
  
 Senha errada:
     
-    $ cswap file -t zenit
+    $ cs file -t zenit
     password_4321
 
     Lt'yevflojbv\u00e9vw4vOyOet4jvOy4zotOvDtv3byzel bjPyj>v0wtv3l'OyOetv'jvOwrOeyewy\u00e7\u00e3lvDjOvotebjOvDtvw4jvzjoj bjvztojvOwjv3lbbtOzl'Dt'etv'lv'l4tvLNE)8vfsZGhg
@@ -150,9 +150,9 @@ Utilize o mesmo comando usado para adicionar e ler um documento, faça as altera
 
 Apague um arquivo na base de dados da seguinte forma:
 
-    $ cswap delete
+    $ cs delete
     or 
-    $ cswap delete -t titulo_do_arquivo
+    $ cs delete -t titulo_do_arquivo
 
 Você precisará inserir o título do arquivo que deseja excluir, bem como sua senha. se a senha estiver incorreta, o arquivo não será removido, caso contrário, será removido com sucesso.
 
@@ -160,14 +160,14 @@ Você precisará inserir o título do arquivo que deseja excluir, bem como sua s
 
 Liste os arquivos presentes localmente da seguinte forma:
 
-    $ cswap list
+    $ cs list
 
 ### Backup
 
 Com os seguintes comandos você pode exportar ou importar um arquivo Json com todas as informações necessárias para ler os arquivos de qualquer dispositivo, se você tiver a senha é claro ;)
 
-    $ cswap backup -b save
-    $ cswap backup -b load
+    $ cs backup -b save
+    $ cs backup -b load
 
 Em ambos abrirá uma janela de arquivo, onde em 'save', você precisa selecionar onde deseja salvar o arquivo, e 'load', você deve selecionar o arquivo json que deseja importar, por padrão as janelas são abertas no caminho Desktop.
 
