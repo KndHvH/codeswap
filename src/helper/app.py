@@ -11,10 +11,9 @@ class AppHelper():
         return '../../../database/db.json'
 
     @staticmethod
-    def get_db_folder_path():
+    def get_db_foulder_path():
         return '../../../database'
 
     @staticmethod
     def get_db_file_name():
         return 'db.json'
-

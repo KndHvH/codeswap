@@ -3,7 +3,7 @@ import click
 import shutil
 from dataclasses import dataclass
 from tkinter import filedialog as fd
-
+from src.helper.app import AppHelper
 from src.service.manage_json import get_json, save_on_dbjson_file
 
 desktop = os.path.normpath(os.path.expanduser("~/Desktop"))
@@ -11,7 +11,7 @@ scriptPath = os.path.dirname(__file__)
 
 @dataclass
 class BackupDatabase():
-    DATABASE_PATH : str = os.environ['DATABASE_PATH']
+    DATABASE_PATH : str = AppHelper.get_db_path()
     FILE_TYPES : tuple = ( ('json file', '*.json'), ('All files', '*.*') )
 
     def _get_backup_path(self) -> str:
