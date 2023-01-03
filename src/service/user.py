@@ -1,6 +1,6 @@
 
 
-from service.text.manage_json import get_json
+from src.service.text.manage_json import get_json
 
 
 def is_new_user():

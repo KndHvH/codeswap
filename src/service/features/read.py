@@ -1,7 +1,7 @@
 
-from service.text.swap import swap
-from service.text.get_key import get_key
-from service.text.manage_json import *
+from src.service.text.swap import swap
+from src.service.text.get_key import get_key
+from src.service.text.manage_json import *
 
 
 def read_file(title, user):

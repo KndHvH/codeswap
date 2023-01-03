@@ -3,14 +3,14 @@ import os
 import requests as req
 import click
 
-from service.version import version_number
+from src.service.version import version_number
 
 
 def update(new):
 
     wd = os.getcwd()
     os.chdir(os.path.dirname(__file__))
-    os.chdir('..')
+    os.chdir('...')
 
     subprocess.run(["git", "fetch"])
     subprocess.run(["git", "pull"])

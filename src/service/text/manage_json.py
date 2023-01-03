@@ -1,5 +1,5 @@
-from service.text.create_db import create_db
-from service.features.delete import delete
+from src.service.text.create_db import create_db
+from src.service.features.delete import delete
 import json
 import os
 scriptPath = os.path.dirname(__file__)

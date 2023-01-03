@@ -1,5 +1,7 @@
 from setuptools import setup, find_packages
-from service.version import version_number
+from src.service.version import version_number
+
+
 
 setup(
     name='codeswap',
@@ -11,12 +13,14 @@ setup(
     url='https://www.github.com/kndhvh/codeswap',
     include_package_data=True,
     install_requires=[
-        'Click',
-        'requests'
+        'click',
+        'requests',
+        'setuptools',
+        
     ],
     entry_points={
         'console_scripts': [
-            'cswap = main:main',
+            'cswap = src.main:main',
         ],
     },
 )

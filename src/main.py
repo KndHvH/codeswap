@@ -1,18 +1,25 @@
 
+from src.service.add_tkinter import add_tkinter
+add_tkinter()
+
 import click
 import os
-from service.backup.backup import backup_database, load_database
 
-from service.features.read import read_file
-from service.features.edit import edit_file
-from service.text.manage_json import get_json
+from src.service.backup.backup import backup_database, load_database
 
-from service.login import login
-from service.update import update_verif
-from service.user import is_new_user
-from service.version import version_number
+from src.service.features.read import read_file
+from src.service.features.edit import edit_file
+from src.service.text.manage_json import get_json
+
+from src.service.login import login
+from src.service.update import update_verif
+from src.service.user import is_new_user
+from src.service.version import version_number
+
 
 update_verif()
+
+
 if is_new_user():
     click.secho('Warning!', bg='yellow', fg='black')
     click.secho('project still under development', fg='yellow')

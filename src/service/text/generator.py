@@ -1,5 +1,5 @@
 import random
-from service.text.title_checker import title_verif
+from src.service.text.title_checker import title_verif
 
 
 def genCode() -> str:
