@@ -7,17 +7,11 @@ from src.service.version import get_version
 
 
 
-def update(new):
+def update():
 
-    wd = os.getcwd()
-    os.chdir(os.path.dirname(__file__))
-    os.chdir('...')
 
-    subprocess.run(["git", "fetch"])
-    subprocess.run(["git", "pull"])
-    subprocess.run(["pip", "install", "-e", "."])
-
-    os.chdir(wd)
+    subprocess.run(["pip", "install", "codeswap"])
+    subprocess.run(["pip", "install", "codeswap"])
 
     click.secho('app updated successfully', bg='blue', fg='white')
     
