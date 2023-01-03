@@ -9,7 +9,7 @@ def add_tkinter():
     except:
         click.secho('Error!', bg='red', fg='black')
         click.secho('Tkinter module required', fg='red')
-        click.secho('try:', fg='red')
+        click.secho('trying to solve automatically:', fg='red')
 
         if platform.system() == 'Linux':
             subprocess.run(['sudo','apt', 'install', 'python3-tk'])
