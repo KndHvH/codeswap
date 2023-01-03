@@ -27,14 +27,14 @@ def save_json(dict, replace=False):
 def save_on_dbjson_file(files):
     full_file = {'code': files}
 
-    relPath = '../../database/db.json'
+    relPath = '../database/db.json'
     filepath = os.path.join(scriptPath, relPath)
     with open(filepath, 'w') as outfile:
         json.dump(full_file, outfile)
 
 
 def local_path():
-    relPath = '../../database/db.json'
+    relPath = '../database/db.json'
     return os.path.join(scriptPath, relPath)
 
 def get_json(path=local_path()):

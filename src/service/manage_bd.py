@@ -12,7 +12,7 @@ def create_db():
 
     if move_foulder(): return
 
-    relPath = '../../database'
+    relPath = '../database'
     folderPath = os.path.join(scriptPath, relPath)
 
     if not os.path.exists(folderPath):
@@ -32,13 +32,13 @@ def create_db():
 
 
 def move_foulder():
-    relPath = '../../../database'
+    relPath = '../../database'
     folderPath = os.path.join(scriptPath, relPath)
 
     if not os.path.exists(folderPath): return False
 
 
-    relPath = '../../database'
+    relPath = '../database'
     destinyPath = os.path.join(scriptPath, relPath)
     
     shutil.move(folderPath,destinyPath)

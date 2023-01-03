@@ -31,7 +31,7 @@ def backup_database():
 
     path = get_save_backup_path()
 
-    relPath = '../../database/db.json'
+    relPath = '../database/db.json'
     filepath = os.path.join(scriptPath, relPath)
 
     shutil.copy(filepath,path)
