@@ -3,7 +3,7 @@ import os
 import requests as req
 import click
 
-from version import get_version
+from src.service.version import get_version
 
 
 

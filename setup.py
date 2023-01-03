@@ -1,10 +1,10 @@
 from setuptools import setup, find_packages
-from src.service.version import version_number
+from src.service.version import get_version
 
 
 setup(
     name='codeswap',
-    version=version_number(),
+    version=get_version(),
     license='MIT',
     author='Matias Herklotz',
     author_email='matherklotzz@gmail.com',
