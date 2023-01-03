@@ -1,15 +1,19 @@
 
 import click
 import os
+from src.service.generator import genCode
+from src.service import get_dict, get_file, get_key
+from src.service.manage_json import save_json
+
 scriptPath = os.path.dirname(__file__)
 
 
 def edit_file(title, user, delete=False):
 
-    file = read_file(title, user)
+    file = get_file(title, user)
 
     if not file:
-        json = add_file(click.edit(), genCode(), title, user)
+        json = get_dict(click.edit(), genCode(), title, user)
 
     else:
         if delete:
@@ -23,6 +27,6 @@ def edit_file(title, user, delete=False):
 
         key = get_key(title, user)
 
-        json = add_file(master, key, title, user)
+        json = get_dict(master, key, title, user)
 
     save_json(json)

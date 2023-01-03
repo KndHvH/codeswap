@@ -3,7 +3,8 @@ import shutil
 import os
 import click
 
-from src.service.text.manage_json import get_json, save_on_dbjson_file
+from src.service.manage_json import get_json, save_on_dbjson_file
+
 desktop = os.path.normpath(os.path.expanduser("~/Desktop"))
 scriptPath = os.path.dirname(__file__)
 

@@ -1,6 +1,6 @@
 
 
-from code.listpool import gen_str_to_num_dict
+from src.service.listpool import gen_str_to_num_dict
 
 
 def str_to_int(text: str) -> int:

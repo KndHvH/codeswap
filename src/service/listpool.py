@@ -23,6 +23,3 @@ def gen_str_to_num_dict():
     return dict
 
 
-
-print(gen_str_to_num_dict())
-

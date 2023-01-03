@@ -1,29 +1,19 @@
-
-from src.service.add_tkinter import add_tkinter
-add_tkinter()
-
 import click
 import os
 
-from src.service.backup.backup import backup_database, load_database
 
-from src.service.features.read import read_file
-from src.service.features.edit import edit_file
-from src.service.text.manage_json import get_json
+from src.service.tkinter import add_tkinter
+add_tkinter()
 
-from src.service.login import login
 from src.service.update import update_verif
-from src.service.user import is_new_user
-from src.service.version import version_number
-
-
 update_verif()
 
-
+from src.service.user import is_new_user
 if is_new_user():
     click.secho('Warning!', bg='yellow', fg='black')
     click.secho('project still under development', fg='yellow')
     click.secho('don\'t save any data you can\'t afford to lose', fg='yellow')
+    
 
 @click.group()
 def main():

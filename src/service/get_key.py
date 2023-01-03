@@ -1,5 +1,7 @@
-from src.service.text.manage_json import get_json
-from src.service.text.bin import *
+
+
+from src.service.binary import bin_to_code, count_to_bin
+from src.service.manage_json import get_json
 
 
 def get_key(title, user):

@@ -1,6 +1,6 @@
 import random
 
-from code.listpool import get_letter_str_upper, get_symbol_str
+from src.service.listpool import get_letter_str_upper, get_symbol_str
 
 def genCode() -> str:
 

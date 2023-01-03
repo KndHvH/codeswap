@@ -1,6 +1,8 @@
 
-from src.service.text.swap import swap
-from src.service.text.bin import *
+
+
+from src.service import swap
+from src.service.binary import bin_to_count, code_to_bin
 
 
 def get_dict(master, password, title, user, test=False) -> dict:
