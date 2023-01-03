@@ -16,6 +16,8 @@ Consiste em um programa que tem como função principal armazenar localmente tex
   - [Conteúdo](#conteúdo)
   - [Sobre](#sobre)
   - [Instalação](#instalação)
+  - [Troubleshooting](#troubleshooting)
+    - [The Term 'cs' or 'cswap' Is Not Recognized or Command Not Found](#the-term-cs-or-cswap-is-not-recognized-or-command-not-found)
   - [Funcionalidades](#funcionalidades)
     - [Adicione](#adicione)
       - [Arquivo exemplo](#arquivo-exemplo)
@@ -47,6 +49,16 @@ Outra questão positiva, é que não existe uma senha "certa" ou "errada", a ló
     Certifique-se de ter o Python instalado e adicionado ao PATH!
     
     $ pip install codeswap
+
+## Troubleshooting
+
+### The Term 'cs' or 'cswap' Is Not Recognized or Command Not Found
+
+- 1. Reinstale o Python pelo próprio [site](https://www.python.org/downloads/) deles,
+- 2. adicione o Python ao PATH pela própria instalação
+
+
+
 
 ## Funcionalidades
 ### Adicione

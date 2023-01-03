@@ -5,7 +5,7 @@
 
 # CodeSwap
 
-This is a personal project to be able to test my knowledge of the recent courses realized in test.
+This is a personal project to be able to put in test my knowledge of the recent courses realized.
 It consists of a program whose main function is to locally store texts and sensitive information in an easy and safe way.
 
 ![](codeswap-showcase.gif)
@@ -16,7 +16,9 @@ It consists of a program whose main function is to locally store texts and sensi
   - [Content](#content)
   - [About](#about)
   - [Installation](#installation)
-  - [Functionalities](#functionalities)
+  - [Troubleshooting](#troubleshooting)
+    - [The Term 'cs' or 'cswap' Is Not Recognized or Command Not Found](#the-term-cs-or-cswap-is-not-recognized-or-command-not-found)
+  - [Features](#features)
     - [Add](#add)
       - [Sample file](#sample-file)
       - [Context](#context)
@@ -48,7 +50,15 @@ Another positive issue is that there is no "right" or "wrong" password, CodeSwap
 
     $ pip install codeswap
 
-## Functionalities
+## Troubleshooting
+
+### The Term 'cs' or 'cswap' Is Not Recognized or Command Not Found
+
+- 1. Reinstall Python from their own [site](https://www.python.org/downloads/)  
+- 2. add Python to PATH through the installation
+
+
+## Features
 ### Add
 
 Add a file to the database, you will need to create a title and then a password.

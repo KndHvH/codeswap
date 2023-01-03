@@ -6,7 +6,6 @@ from src.service.backup import backup_database, load_database
 from src.service.edit import edit_file
 from src.service.manage_json import get_json
 from src.service.tkinter import add_tkinter
-from src.service.version import get_version
 from src.service.update import update_verif
 from src.service.user import is_new_user
 
@@ -16,7 +15,7 @@ if is_new_user():
     click.secho('Warning!', bg='yellow', fg='black')
     click.secho('project still under development', fg='yellow')
     click.secho('don\'t save any data you can\'t afford to lose', fg='yellow')
-    
+
 
 @click.group()
 def main():
@@ -65,9 +64,10 @@ def list():
 
 @main.command(short_help='show current version')
 def version():
+    version = os.environ['VERSION']
 
     click.echo(f'install dir: {os.path.dirname(__file__)}')
-    click.echo(f'v{get_version()}')
+    click.echo(f'v{version}')
 
 
 @main.command(short_help='manage your db backup')

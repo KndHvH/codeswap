@@ -1,10 +1,11 @@
 from setuptools import setup, find_packages
-from src.service.version import get_version
+import os
+
 
 
 setup(
     name='codeswap',
-    version=get_version(),
+    version=os.environ['VERSION'],
     license='MIT',
     author='Matias Herklotz',
     author_email='matherklotzz@gmail.com',

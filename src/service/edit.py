@@ -1,7 +1,7 @@
 
 import click
 import os
-from src.service.generator import genCode
+from src.helper.string import StringHelper
 from src.service.get_dict import get_dict
 from src.service.get_file import get_file_text
 from src.service.get_key import get_key
@@ -15,7 +15,7 @@ def edit_file(title, user, delete=False):
     file = get_file_text(title, user)
 
     if not file:
-        json = get_dict(click.edit(), genCode(), title, user)
+        json = get_dict(click.edit(), StringHelper.genCode(), title, user)
 
     else:
         if delete:
