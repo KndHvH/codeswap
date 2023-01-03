@@ -9,7 +9,6 @@ setup(
     author='Matias Herklotz',
     author_email='matherklotzz@gmail.com',
     packages=find_packages(),
-    py_modules=['os', 'subprocess', 'platform','json','random','shutil','itertools'],
     url='https://www.github.com/kndhvh/codeswap',
     include_package_data=True,
     install_requires=[
@@ -20,6 +19,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
+            'cs = src.main:main',
             'cswap = src.main:main',
         ],
     },

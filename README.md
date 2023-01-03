@@ -44,9 +44,9 @@ Outra questão positiva, é que não existe uma senha "certa" ou "errada", a ló
 
 ## Instalação
 
-    $ git clone https://www.github.com/kndhvh/codeswap.git
-    $ cd codeswap
-    $ pip install -e .
+    Certifique-se de ter o Python instalado e adicionado ao PATH!
+    
+    $ pip install codeswap
 
 ## Funcionalidades
 ### Adicione
