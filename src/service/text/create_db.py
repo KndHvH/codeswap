@@ -1,5 +1,6 @@
 import json
 import os
+import shutil
 scriptPath = os.path.dirname(__file__)
 
 
@@ -8,6 +9,9 @@ class FileAlreadyExists(Exception):
 
 
 def create_db():
+
+    if move_foulder(): return
+
     relPath = '../../database'
     folderPath = os.path.join(scriptPath, relPath)
 
@@ -27,4 +31,14 @@ def create_db():
             json.dump({'code':[]}, file)
 
 
-        
+def move_foulder():
+    relPath = '../../../database'
+    folderPath = os.path.join(scriptPath, relPath)
+
+    relPath = '../../database'
+    destinyPath = os.path.join(scriptPath, relPath)
+
+    if os.path.exists(folderPath):
+        shutil.move(folderPath,destinyPath)
+
+    return True

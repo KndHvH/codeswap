@@ -18,8 +18,6 @@ from src.service.version import version_number
 
 
 update_verif()
-
-
 if is_new_user():
     click.secho('Warning!', bg='yellow', fg='black')
     click.secho('project still under development', fg='yellow')
