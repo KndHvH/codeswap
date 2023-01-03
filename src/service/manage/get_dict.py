@@ -3,7 +3,7 @@ from src.service.text.swap import swap
 from src.service.text.bin import *
 
 
-def add_file(master, password, title, user, test=False) -> dict:
+def get_dict(master, password, title, user, test=False) -> dict:
 
     master = swap(master, password)
 

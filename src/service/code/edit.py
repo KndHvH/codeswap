@@ -1,8 +1,4 @@
-from src.service.features.read import read_file
-from src.service.features.add import add_file
-from src.service.text.generator import genCode
-from src.service.text.manage_json import *
-from src.service.text.get_key import get_key
+
 import click
 import os
 scriptPath = os.path.dirname(__file__)

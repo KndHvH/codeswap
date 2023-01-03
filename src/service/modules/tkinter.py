@@ -15,10 +15,10 @@ def add_tkinter():
             subprocess.run(['sudo','apt', 'install', 'python3-tk'])
 
         elif platform.system() == 'Windows':
-            click.secho('windows:', fg='red')
+            click.secho('windows machine detected', fg='red')
 
         else:
-            click.secho(':', fg='red')
+            click.secho('tkinter module missing', fg='red')
 
             
     
