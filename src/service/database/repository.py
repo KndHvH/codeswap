@@ -3,7 +3,7 @@ import json
 
 from helper.binary import BinaryHelper
 from helper.string import StringHelper
-from src.infrastructure.database.database import Database
+from src.service.database.database import Database
 
 script_path = os.path.dirname(__file__)
 
@@ -62,7 +62,19 @@ class Repository():
 
         return files
 
-    def add_file(master, password, title, user, test=False) -> dict:
+    
+    def get_key(title, user):
+        files = Repository.get_json()['code']
+
+        for file in files:
+            if file['title'] == title:
+                key = BinaryHelper.binary_to_code(BinaryHelper.count_to_binary(file['user']//user))
+
+                return key[1:]
+        return None
+
+
+    def add_file(master, password, title, user) -> dict:
 
         master = StringHelper.swap(master, password)
         password = ':' + password
@@ -70,7 +82,7 @@ class Repository():
 
         data = {'title': '', 'user': '', 'file': ''}
 
-        if len(str(user)) > 255 or test:
+        if len(str(user)) > 255:
             data['file'] = master
             data['title'] = title
             data['user'] = user
