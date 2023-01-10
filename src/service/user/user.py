@@ -1,10 +1,18 @@
 
+import click
+
+from src.service.database.repository import Repository
 
 
-from src.service.manage_json import get_json
+class NewUser():
 
+    def __init__(self) -> None:
+        if Repository.get_json()['code'] == []:
+            self.__warning()
 
-def is_new_user():
-    file = get_json()['code']
-    if file == []: return True
-    return False
+    def __warning():
+        click.secho('Warning!', bg='yellow', fg='black')
+        click.secho('project still under development', fg='yellow')
+        click.secho(
+            'don\'t save any data you can\'t afford to lose', fg='yellow')
+        click.secho('see all comands with cs --help', fg='yellow')

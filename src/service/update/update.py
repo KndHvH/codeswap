@@ -3,34 +3,34 @@ import os
 import requests as req
 import click
 
-from helper.app import AppHelper
+from src.helper.app import AppHelper
 
 
-def update():
+class UpdateApp():
 
-    subprocess.run(["pip", "install", "codeswap"])
-    subprocess.run(
-        ["pip", "install", f"codeswap=={AppHelper.get_version()[1:]}"])
+    def __init__(self) -> None:
+        try:
+            new = req.get(
+                "https://kndhvh.github.io/codeswap.json").json()['codeswap']
 
-    click.secho('app updated successfully', bg='blue', fg='white')
+            if new != AppHelper.get_version():
 
+                self.__want_update(new)
+        except:
+            pass
 
-def update_verif():
-    try:
-        new = req.get(
-            "https://kndhvh.github.io/codeswap.json").json()['codeswap']
+    def __want_update(self, new):
 
-        if new != AppHelper.get_version():
+        click.secho('new version avaliable:', bg='blue', fg='white')
+        click.secho(f'remote: v{new}')
+        click.secho(f'local: v{AppHelper.get_version()}')
+        if click.confirm(click.style('want to update?'), prompt_suffix=''):
+            self.__update(new)
 
-            want_update(new)
-    except:
-        pass
+    def __update(self):
 
+        subprocess.run(["pip", "install", "codeswap"])
+        subprocess.run(
+            ["pip", "install", f"codeswap=={AppHelper.get_version()[1:]}"])
 
-def want_update(new):
-
-    click.secho('new version avaliable:', bg='blue', fg='white')
-    click.secho(f'remote: v{new}')
-    click.secho(f'local: v{AppHelper.get_version()}')
-    if click.confirm(click.style('want to update?'), prompt_suffix=''):
-        update(new)
+        click.secho('app updated successfully', bg='blue', fg='white')

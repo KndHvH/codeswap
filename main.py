@@ -2,19 +2,16 @@ import click
 import os
 from src.service.database.repository import Repository
 from src.service.user.login import login
-from src.service.backup.backup import b
-from src.service.edit import edit_file
-from src.service.manage_json import get_json
-from src.service.tkinter import add_tkinter
-from src.service.update import update_verif
-from src.service.user import is_new_user
+from src.service.backup.backup import BackupDatabase
+from src.service.database.repository import Repository
+from src.service.modules.tkinter import AddTkinterClass
+from src.service.update.update import UpdateApp
+from src.service.user.user import NewUser
 
-add_tkinter()
-update_verif()
-if is_new_user():
-    click.secho('Warning!', bg='yellow', fg='black')
-    click.secho('project still under development', fg='yellow')
-    click.secho('don\'t save any data you can\'t afford to lose', fg='yellow')
+AddTkinterClass()
+UpdateApp()
+NewUser()
+    
 
 
 @click.group()
@@ -37,7 +34,7 @@ def file(t):
     if not t:
         t = click.prompt(click.style(
             'file title_', fg='blue'), prompt_suffix='')
-    edit_file(t, login())
+    Repository.edit_file(t, login())
 
 
 @main.command(short_help='delete a file')
@@ -46,17 +43,17 @@ def delete(t):
     if not t:
         t = click.prompt(click.style(
             'file title_', fg='blue'), prompt_suffix='')
-    click.echo(Repository.get_file(t, login()))
+    click.echo(Repository.get_file_text(t, login()))
 
     if click.confirm(click.style('confirm delete?', bg='red', fg='white'), prompt_suffix=''):
-        edit_file(t, login(), delete=True)
+        Repository.delete_file(t, login())
 
 
 @main.command(short_help='list all files titles')
 def list():
     click.secho('titles_', fg='blue')
 
-    files = get_json()['code']
+    files = Repository.get_json()['code']
 
     for file in files:
         click.echo(file['title'])
@@ -75,9 +72,9 @@ def version():
 def backup(b):
     match b:
         case 'Save':
-            backup_database()
+            BackupDatabase.backup_database()
             click.secho('database saved successfully!', bg='blue', fg='white')
 
         case 'Load':
-            load_database()
+            BackupDatabase.load_database()
             click.secho('database loaded successfully!', bg='blue', fg='white')

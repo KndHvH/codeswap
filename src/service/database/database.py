@@ -1,18 +1,16 @@
 import json
 import os
 import shutil
-from dataclasses import dataclass
 from src.helper.app import AppHelper
 from src.service.errors.FileAlreadyExistsError import FileAlreadyExists
 
 script_path = os.path.dirname(__file__)
 
 
-@dataclass
 class Database():
-    DATABASE_PATH: str = AppHelper.get_db_path()
-    DATABASE_FILE_NAME: str = AppHelper.get_db_file_name()
-    DATABASE_FOULDER_PATH: str = AppHelper.get_db_foulder_path()
+    DATABASE_PATH = AppHelper.get_db_path()
+    DATABASE_FILE_NAME = AppHelper.get_db_file_name()
+    DATABASE_FOULDER_PATH = AppHelper.get_db_foulder_path()
 
     def __init__(self) -> None:
         self.__create_db()
