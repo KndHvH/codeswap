@@ -27,12 +27,22 @@ class Repository():
                 Database()
 
     @staticmethod
-    def get_file_text(title):
+    def get_file_content(title):
         files = Repository.get_json()['code']
 
         for file in files:
             if file['title'] == title:
                 return file['file']
+
+    @staticmethod
+    def get_file_text(title,user):
+        key = Repository.get_key(title, user)
+        if key != None:
+
+            file = Repository.get_file_content(title)
+
+            return StringHelper.swap(file, key)
+
 
     @staticmethod
     def save_json(dict, replace=False):

@@ -12,7 +12,7 @@ class StringHelper():
 
     @staticmethod
     def convert_str_to_dict() -> dict:
-        return dict(zip(string.ascii_letters, [range(0, len(string.ascii_letters))]))
+        return {v: i for i, v in enumerate(string.ascii_letters)}
 
     @staticmethod
     def str_to_int(text: str) -> int:
@@ -22,7 +22,7 @@ class StringHelper():
         for letter in text:
             converted_string.append(str(pool.get(letter, letter)))
 
-        return ''.join(converted_string)
+        return int(''.join(converted_string))
 
     @staticmethod
     def swap(body: str, password: str) -> str:
