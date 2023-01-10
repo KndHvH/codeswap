@@ -10,17 +10,19 @@ script_path = os.path.dirname(__file__)
 
 
 class Repository():
-    DATABASE_PATH = AppHelper.get_db_path()
+    app = AppHelper()
+    DATABASE_PATH = app.db_path
 
     @staticmethod
     def _local_json_path():
         return os.path.join(script_path, Repository.DATABASE_PATH)
 
     @staticmethod
-    def get_json() -> None:
+    def get_json(path=None) -> None:
+        if path == None: path = Repository._local_json_path()
         for _ in range(0, 2):
             try:
-                with open(Repository._local_json_path(), "r") as file:
+                with open(path, "r") as file:
                     return json.load(file)
 
             except FileNotFoundError:

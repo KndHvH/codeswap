@@ -2,18 +2,24 @@
 
 class AppHelper():
 
-    @staticmethod
-    def get_version():
-        return '1.2.0-beta.1'
+    def __init__(self) -> None:
+        self.__version = '1.2.0-beta.2'
+        self.__db_path = '../../database/db.json'
+        self.__db_foulder_path = '../../database'
+        self.__db_file_name = 'db.json'
 
-    @staticmethod
-    def get_db_path():
-        return '../../database/db.json'
+    @property
+    def version(self):
+        return self.__version
 
-    @staticmethod
-    def get_db_foulder_path():
-        return '../../database'
+    @property
+    def db_path(self):
+        return self.__db_path
 
-    @staticmethod
-    def get_db_file_name():
-        return 'db.json'
+    @property
+    def db_foulder_path(self):
+        return self.__db_foulder_path
+
+    @property
+    def db_file_name(self):
+        return self.__db_file_name

@@ -4,6 +4,7 @@ import requests as req
 import click
 
 from src.helper.app import AppHelper
+app = AppHelper()
 
 
 class UpdateApp():
@@ -13,7 +14,7 @@ class UpdateApp():
             new = req.get(
                 "https://kndhvh.github.io/codeswap.json").json()['codeswap']
 
-            if new != AppHelper.get_version():
+            if new != app.version:
 
                 self.__want_update(new)
         except:
@@ -23,14 +24,14 @@ class UpdateApp():
 
         click.secho('new version avaliable:', bg='blue', fg='white')
         click.secho(f'remote: v{new}')
-        click.secho(f'local: v{AppHelper.get_version()}')
+        click.secho(f'local: v{app.version}')
         if click.confirm(click.style('want to update?'), prompt_suffix=''):
             self.__update(new)
 
-    def __update(self):
+    def __update(self, new):
 
         subprocess.run(["pip", "install", "codeswap"])
         subprocess.run(
-            ["pip", "install", f"codeswap=={AppHelper.get_version()[1:]}"])
+            ["pip", "install", f"codeswap=={new}"])
 
         click.secho('app updated successfully', bg='blue', fg='white')

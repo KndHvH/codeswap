@@ -7,38 +7,36 @@ from src.service.database.repository import Repository
 from src.service.modules.tkinter import AddTkinterClass
 from src.service.update.update import UpdateApp
 from src.service.user.user import NewUser
+from src.helper.app import AppHelper
 
 AddTkinterClass()
 UpdateApp()
 NewUser()
-    
 
 
-@click.group()
-def main():
+@click.command(short_help='create or edit a file')
+@click.option('-t', '--title', default=None, help='file title')
+@click.option('-d', 'command',  help='delete a file title',  flag_value='d')
+@click.option('-l', 'command',  help='list all files',  flag_value='l')
+@click.option('-v', 'command',  help='show app version',  flag_value='v')
+@click.option('-b', 'command',  help='backup files',  flag_value='b')
+def main(title, command):
     """codeswap:
 
     \b
-    create or edit your file with the 'file' command.
-    delete your files with the 'delete' command.
-    you can use the '-t' option to input the file title through the terminal.
+    create or edit your files.
+    delete your files with the '--delete' command.
+    you can use the '--title' option to input the file title through the terminal.
 
-
+    type=click.Choice(['save', 'load'], case_sensitive=False)
     """
-    pass
-
-
-@main.command(short_help='create or edit a file')
-@click.option('-t', default=None, help='file title')
-def file(t):
-    if not t:
-        t = click.prompt(click.style(
+    if not title:
+        title = click.prompt(click.style(
             'file title_', fg='blue'), prompt_suffix='')
-    Repository.edit_file(t, login())
+
+    Repository.edit_file(title, login())
 
 
-@main.command(short_help='delete a file')
-@click.option('-t', default=None, help='file title')
 def delete(t):
     if not t:
         t = click.prompt(click.style(
@@ -49,7 +47,6 @@ def delete(t):
         Repository.delete_file(t, login())
 
 
-@main.command(short_help='list all files titles')
 def list():
     click.secho('titles_', fg='blue')
 
@@ -59,16 +56,13 @@ def list():
         click.echo(file['title'])
 
 
-@main.command(short_help='show current version')
 def version():
-    version = os.environ['VERSION']
+    app = AppHelper()
 
     click.echo(f'install dir: {os.path.dirname(__file__)}')
-    click.echo(f'v{version}')
+    click.echo(f'v{app.version}')
 
 
-@main.command(short_help='manage your db backup')
-@click.option('-b', required=True, type=click.Choice(['Save', 'Load'], case_sensitive=False))
 def backup(b):
     match b:
         case 'Save':

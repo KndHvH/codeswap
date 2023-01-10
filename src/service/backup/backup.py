@@ -12,15 +12,20 @@ scriptPath = os.path.dirname(__file__)
 
 @dataclass
 class BackupDatabase():
-    DATABASE_PATH: str = AppHelper.get_db_path()
+    app = AppHelper()
+
+    DATABASE_PATH: str = app.db_path
     FILE_TYPES: tuple = (('json file', '*.json'), ('All files', '*.*'))
 
-    def _get_backup_path() -> str:
+    def _get_backup_path():
         return fd.askopenfilename(
             title='load the backup',
             initialdir=desktop,
             filetypes=BackupDatabase.FILE_TYPES
         )
+
+    def _get_backup_foulder():
+        return fd.askdirectory(title='select save foulder',initialdir=desktop)
 
     def _backup_overrite_warning() -> None:
         click.secho('Warning!', bg='yellow', fg='black')
@@ -28,12 +33,12 @@ class BackupDatabase():
         click.secho('you must first delete the local version, use', fg='yellow')
         click.secho('\'cswap delete -t ~filename\'', fg='yellow')
 
-    def save_backup_path() -> str:
+    def save_backup_path():
         return fd.askdirectory(title='select save foulder', initialdir=desktop)
 
     def backup_database() -> None:
         filepath = os.path.join(scriptPath, BackupDatabase.DATABASE_PATH)
-        shutil.copy(filepath, BackupDatabase._get_backup_path())
+        shutil.copy(filepath, BackupDatabase._get_backup_foulder())
 
     def load_database():
 

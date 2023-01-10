@@ -8,9 +8,11 @@ script_path = os.path.dirname(__file__)
 
 
 class Database():
-    DATABASE_PATH = AppHelper.get_db_path()
-    DATABASE_FILE_NAME = AppHelper.get_db_file_name()
-    DATABASE_FOULDER_PATH = AppHelper.get_db_foulder_path()
+    app = AppHelper()
+
+    DATABASE_PATH = app.db_path
+    DATABASE_FILE_NAME = app.db_file_name
+    DATABASE_FOULDER_PATH = app.db_foulder_path
 
     def __init__(self) -> None:
         self.__create_db()

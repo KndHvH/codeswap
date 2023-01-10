@@ -1,12 +1,12 @@
 from setuptools import setup, find_packages
 from src.helper.app import AppHelper
-import os
 
+app = AppHelper()
 
 
 setup(
     name='codeswap',
-    version=AppHelper.get_version(),
+    version=app.version,
     license='MIT',
     author='Matias Herklotz',
     author_email='matherklotzz@gmail.com',
