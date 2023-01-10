@@ -20,7 +20,7 @@ class Repository():
     def get_json() -> None:
         for _ in range(0, 2):
             try:
-                with open(Repository._local_json_path, "r") as file:
+                with open(Repository._local_json_path(), "r") as file:
                     return json.load(file)
 
             except FileNotFoundError:

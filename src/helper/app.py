@@ -8,11 +8,11 @@ class AppHelper():
 
     @staticmethod
     def get_db_path():
-        return '../../../database/db.json'
+        return '../../database/db.json'
 
     @staticmethod
     def get_db_foulder_path():
-        return '../../../database'
+        return '../../database'
 
     @staticmethod
     def get_db_file_name():
