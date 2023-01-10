@@ -3,7 +3,7 @@ import os
 import shutil
 from dataclasses import dataclass
 from src.helper.app import AppHelper
-from src.service.errors import FileAlreadyExists
+from src.service.errors.FileAlreadyExistsError import FileAlreadyExists
 
 script_path = os.path.dirname(__file__)
 

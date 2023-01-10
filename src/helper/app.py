@@ -4,7 +4,7 @@ class AppHelper():
 
     @staticmethod
     def get_version():
-        return '1.2.0'
+        return '1.2.0-beta.1'
 
     @staticmethod
     def get_db_path():

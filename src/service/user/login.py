@@ -1,7 +1,7 @@
 
 import click
 
-from src.service.str_to_int import str_to_int
+from src.helper.string import StringHelper
 
 
 def login():
@@ -14,7 +14,7 @@ def login():
             if len(user) < 2:
                 raise ValueError
 
-            user = str_to_int(user)
+            user = StringHelper.str_to_int(user)
 
             return int(user)
         except ValueError:

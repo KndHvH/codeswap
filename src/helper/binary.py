@@ -1,17 +1,18 @@
 import itertools
 
+
 class BinaryHelper():
 
-    @staticmethod()
+    @staticmethod
     def code_to_binary(code) -> str:
         return ''.join(format(ord(i), '08b') for i in code)
 
-    @staticmethod()
+    @staticmethod
     def binary_to_code(binary) -> str:
         binary_decoded = [binary[i:i+8] for i in range(0, len(binary), 8)]
         return "".join([chr(int(decoded, 2)) for decoded in binary_decoded])
 
-    @staticmethod()
+    @staticmethod
     def count_to_binary(count) -> str:
 
         count = str(count).split('0')
@@ -23,7 +24,7 @@ class BinaryHelper():
 
         return ''.join(result)
 
-    @staticmethod()
+    @staticmethod
     def binary_to_count(binary) -> str:
         result = []
 
@@ -44,8 +45,7 @@ class BinaryHelper():
 
         return BinaryHelper.group_binary_count(result)
 
-
-    @staticmethod()
+    @staticmethod
     def group_binary_count(binary_data) -> str:
         zeros = []
         non_zeros = []

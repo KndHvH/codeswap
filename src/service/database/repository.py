@@ -1,14 +1,14 @@
 import os
 import json
-
-from helper.binary import BinaryHelper
-from helper.string import StringHelper
+from src.helper.app import AppHelper
+from src.helper.binary import BinaryHelper
+from src.helper.string import StringHelper
 from src.service.database.database import Database
 
 script_path = os.path.dirname(__file__)
 
 class Repository():
-    DATABASE_PATH: str = os.environ['DATABASE_PATH']
+    DATABASE_PATH: str = AppHelper.get_db_path()
 
     def _local_json_path(self):
         return os.path.join(script_path, self.DATABASE_PATH)

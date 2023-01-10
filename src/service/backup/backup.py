@@ -4,7 +4,7 @@ import shutil
 from dataclasses import dataclass
 from tkinter import filedialog as fd
 from src.helper.app import AppHelper
-from src.service.manage_json import get_json, save_on_dbjson_file
+from src.service.database.repository import Repository
 
 desktop = os.path.normpath(os.path.expanduser("~/Desktop"))
 scriptPath = os.path.dirname(__file__)
@@ -36,8 +36,8 @@ class BackupDatabase():
 
     def load_database(self):
 
-        remote_file_list = get_json(path=self._get_backup_path())['code']
-        local_file_list = get_json()['code']
+        remote_file_list = Repository.get_json(path=self._get_backup_path())['code']
+        local_file_list = Repository.get_json()['code']
 
         for remote_file in remote_file_list:
             append = True
@@ -54,4 +54,4 @@ class BackupDatabase():
         if warning:
             self._backup_overrite_warning()
             
-        save_on_dbjson_file(local_file_list)
+        Repository.save_on_dbjson_file(local_file_list)

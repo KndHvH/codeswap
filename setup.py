@@ -21,8 +21,8 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'cs = src.main:main',
-            'cswap = src.main:main',
+            'cs = main:main',
+            'cswap = main:main',
         ],
     },
 )

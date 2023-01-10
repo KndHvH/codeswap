@@ -1,8 +1,8 @@
 import click
 import os
-from src.service import get_file
-from src.service.login import login
-from src.service.backup import backup_database, load_database
+from src.service.database.repository import Repository
+from src.service.user.login import login
+from src.service.backup.backup import b
 from src.service.edit import edit_file
 from src.service.manage_json import get_json
 from src.service.tkinter import add_tkinter
@@ -46,7 +46,7 @@ def delete(t):
     if not t:
         t = click.prompt(click.style(
             'file title_', fg='blue'), prompt_suffix='')
-    click.echo(get_file(t, login()))
+    click.echo(Repository.get_file(t, login()))
 
     if click.confirm(click.style('confirm delete?', bg='red', fg='white'), prompt_suffix=''):
         edit_file(t, login(), delete=True)

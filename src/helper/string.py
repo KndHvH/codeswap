@@ -6,15 +6,15 @@ import random
 
 class StringHelper():
 
-    @staticmethod()
+    @staticmethod
     def get_symbol_str():
         return '0123456789!@#$%^&*\-,.?:;<>+_\'\"()\n/ '
 
-    @staticmethod()
+    @staticmethod
     def convert_str_to_dict() -> dict:
         return dict(zip(string.ascii_letters, [range(0, len(string.ascii_letters))]))
 
-    @staticmethod()
+    @staticmethod
     def str_to_int(text: str) -> int:
         converted_string = []
         pool = StringHelper.convert_str_to_dict()
@@ -24,7 +24,7 @@ class StringHelper():
 
         return ''.join(converted_string)
 
-    @staticmethod()
+    @staticmethod
     def swap(body: str, password: str) -> str:
         master = list(body)
 
@@ -42,7 +42,7 @@ class StringHelper():
 
         return master
 
-    @staticmethod()
+    @staticmethod
     def genCode() -> str:
 
         pool = list(string.ascii_letters +
