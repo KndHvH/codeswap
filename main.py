@@ -15,12 +15,12 @@ NewUser()
 
 
 @click.command(short_help='create or edit a file')
-@click.option('-t', '--title', default=None, help='file title')
-@click.option('-d', 'command',  help='delete a file title',  flag_value='d')
-@click.option('-l', 'command',  help='list all files',  flag_value='l')
+@click.option('-t', '--title', default=None, help='select a file by title')
+@click.option('-l', '--list', default=None, help='list all files', is_flag=True)
+@click.option('-d', 'command',  help='delete a file',  flag_value='d')
 @click.option('-v', 'command',  help='show app version',  flag_value='v')
 @click.option('-b', 'command',  help='backup files',  flag_value='b')
-def main(title, command):
+def main(title, list, command):
     """codeswap:
 
     \b
@@ -28,13 +28,24 @@ def main(title, command):
     delete your files with the '--delete' command.
     you can use the '--title' option to input the file title through the terminal.
 
-    type=click.Choice(['save', 'load'], case_sensitive=False)
+
     """
+    if list:
+        list_files()
+
     if not title:
         title = click.prompt(click.style(
             'file title_', fg='blue'), prompt_suffix='')
 
-    Repository.edit_file(title, login())
+    match command:
+
+        case 'd': delete(title)
+
+        case 'v': version()
+
+        case 'b': backup(click.Choice(['save', 'load'], case_sensitive=False))
+
+        case _: Repository.edit_file(title, login())
 
 
 def delete(t):
@@ -47,7 +58,7 @@ def delete(t):
         Repository.delete_file(t, login())
 
 
-def list():
+def list_files():
     click.secho('titles_', fg='blue')
 
     files = Repository.get_json()['code']
