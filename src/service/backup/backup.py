@@ -6,6 +6,8 @@ from tkinter import filedialog as fd
 from src.helper.app import AppHelper
 from src.service.database.repository import Repository
 
+
+
 desktop = os.path.normpath(os.path.expanduser("~/Desktop"))
 scriptPath = os.path.dirname(__file__)
 
