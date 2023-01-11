@@ -19,7 +19,8 @@ class Repository():
 
     @staticmethod
     def get_json(path=None) -> None:
-        if path == None: path = Repository._local_json_path()
+        if path == None:
+            path = Repository._local_json_path()
         for _ in range(0, 2):
             try:
                 with open(path, "r") as file:
@@ -37,14 +38,13 @@ class Repository():
                 return file['file']
 
     @staticmethod
-    def get_file_text(title,user):
+    def get_file_text(title, user):
         key = Repository.get_key(title, user)
         if key != None:
 
             file = Repository.get_file_content(title)
 
             return StringHelper.swap(file, key)
-
 
     @staticmethod
     def save_json(dict, replace=False):
@@ -138,3 +138,10 @@ class Repository():
             '', Repository.get_key(title, user), title, user)
 
         Repository.save_json(json)
+
+    @staticmethod
+    def get_file_title(title):
+        if not title:
+            return click.prompt(click.style(
+            'file title_', fg='blue'), prompt_suffix='')
+        return title

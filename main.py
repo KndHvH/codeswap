@@ -18,8 +18,8 @@ NewUser()
 @click.option('-t', '--title', default=None, help='select a file by title')
 @click.option('-l', '--list', default=None, help='list all files', is_flag=True)
 @click.option('-d', 'command',  help='delete a file',  flag_value='d')
-@click.option('-v', 'command',  help='show app version',  flag_value='v')
-@click.option('-b', 'command',  help='backup files',  flag_value='b')
+@click.option('-i', 'command',  help='app version and install path',  flag_value='i')
+@click.option('-b', 'command',  help='backup files', flag_value='b')
 def main(title, list, command):
     """codeswap:
 
@@ -33,19 +33,15 @@ def main(title, list, command):
     if list:
         list_files()
 
-    if not title:
-        title = click.prompt(click.style(
-            'file title_', fg='blue'), prompt_suffix='')
-
     match command:
 
-        case 'd': delete(title)
+        case 'd': delete(Repository.get_file_title(title))
 
-        case 'v': version()
+        case 'i': version()
 
-        case 'b': backup(click.Choice(['save', 'load'], case_sensitive=False))
+        case 'b': backup()
 
-        case _: Repository.edit_file(title, login())
+        case _: Repository.edit_file(Repository.get_file_title(title), login())
 
 
 def delete(t):
@@ -74,12 +70,14 @@ def version():
     click.echo(f'v{app.version}')
 
 
-def backup(b):
-    match b:
-        case 'Save':
+def backup():
+    option = BackupDatabase.get_option()
+
+    match option:
+        case 's':
             BackupDatabase.backup_database()
             click.secho('database saved successfully!', bg='blue', fg='white')
 
-        case 'Load':
+        case 'l':
             BackupDatabase.load_database()
             click.secho('database loaded successfully!', bg='blue', fg='white')
