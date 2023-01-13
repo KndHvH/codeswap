@@ -22,12 +22,12 @@ class Database():
         if Database.__move_foulder():
             return
 
-        database_path = os.path.join(script_path, self.DATABASE_PATH)
+        database_foulder_path = os.path.join(script_path, self.DATABASE_FOULDER_PATH)
 
-        if not os.path.exists(database_path):
-            os.mkdir(database_path)
+        if not os.path.exists(database_foulder_path):
+            os.mkdir(database_foulder_path)
 
-        filepath = os.path.join(database_path, self.DATABASE_FILE_NAME)
+        filepath = os.path.join(database_foulder_path, self.DATABASE_FILE_NAME)
 
         try:
             with open(filepath, "r") as file:
