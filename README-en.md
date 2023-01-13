@@ -17,7 +17,8 @@ It consists of a program whose main function is to locally store texts and sensi
   - [About](#about)
   - [Installation](#installation)
   - [Troubleshooting](#troubleshooting)
-    - [The Term 'cs' or 'cswap' Is Not Recognized or Command Not Found](#the-term-cs-or-cswap-is-not-recognized-or-command-not-found)
+        - [The Term 'cs' or 'cswap' Is Not Recognized or Command Not Found](#the-term-cs-or-cswap-is-not-recognized-or-command-not-found)
+        - [Codeswap can't update automaticaly](#codeswap-cant-update-automaticaly)
   - [Features](#features)
     - [Add](#add)
       - [Sample file](#sample-file)
@@ -51,11 +52,15 @@ Another positive issue is that there is no "right" or "wrong" password, CodeSwap
 
 ## Troubleshooting
 
-### The Term 'cs' or 'cswap' Is Not Recognized or Command Not Found
+##### The Term 'cs' or 'cswap' Is Not Recognized or Command Not Found
 
 1. Reinstall Python from their own [site](https://www.python.org/downloads/)  
 2. add Python to PATH through the installation
 
+##### Codeswap can't update automaticaly
+
+1. Search for the [latest](https://pypi.org/project/codeswap/) codeswap version;
+2. Manually update with 'pip install codeswap==~version_number~'
 
 ## Features
 ### Add

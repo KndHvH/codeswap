@@ -17,7 +17,8 @@ Consiste em um programa que tem como função principal armazenar localmente tex
   - [Sobre](#sobre)
   - [Instalação](#instalação)
   - [Troubleshooting](#troubleshooting)
-    - [The Term 'cs' or 'cswap' Is Not Recognized or Command Not Found](#the-term-cs-or-cswap-is-not-recognized-or-command-not-found)
+        - [The Term 'cs' or 'cswap' Is Not Recognized or Command Not Found](#the-term-cs-or-cswap-is-not-recognized-or-command-not-found)
+        - [Codeswap can't update automaticaly](#codeswap-cant-update-automaticaly)
   - [Funcionalidades](#funcionalidades)
     - [Adicione](#adicione)
       - [Arquivo exemplo](#arquivo-exemplo)
@@ -51,13 +52,15 @@ Outra questão positiva, é que não existe uma senha "certa" ou "errada", a ló
 
 ## Troubleshooting
 
-### The Term 'cs' or 'cswap' Is Not Recognized or Command Not Found
+##### The Term 'cs' or 'cswap' Is Not Recognized or Command Not Found
 
-1. Reinstale o Python pelo próprio [site](https://www.python.org/downloads/) deles,
+1. Reinstale o Python pelo próprio [site](https://www.python.org/downloads/) deles;
 2. adicione o Python ao PATH pela própria instalação
 
+##### Codeswap can't update automaticaly
 
-
+1. Procure pela [versão](https://pypi.org/project/codeswap/) do codeswap mais recente;
+2. Instale essa versao com o comando 'pip install codeswap==~versao~'
 
 ## Funcionalidades
 ### Adicione

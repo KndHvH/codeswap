@@ -9,10 +9,14 @@ app = AppHelper()
 class UpdateApp():
 
     def __init__(self) -> None:
-        remote_version = self.__get_remote_version()
+        try:
+            remote_version = self.__get_remote_version()
 
-        if self.__match_version(remote_version):
-            self.__ask_update(remote_version)
+            if self.__match_version(remote_version):
+                self.__ask_update(remote_version)
+
+        except:
+            pass
 
     def __match_version(self,new_version) -> bool:
 
