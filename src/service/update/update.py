@@ -37,7 +37,6 @@ class UpdateApp():
 
     def __update(self, new):
 
-        subprocess.run(["pip", "install", "codeswap"])
         subprocess.run(["pip", "install", f"codeswap=={new}"])
         click.secho('app updated successfully', bg='blue', fg='white')
 
