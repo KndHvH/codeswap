@@ -13,7 +13,7 @@ class ClickHelper():
     @staticmethod
     def delete(t):
         t = Repository.get_file_title(t)
-        
+
         click.echo(Repository.get_file_text(t, login()))
 
         if click.confirm(click.style('confirm delete?', bg='red', fg='white'), prompt_suffix=''):
@@ -29,11 +29,12 @@ class ClickHelper():
             click.echo(file['title'])
 
     @staticmethod
-    def version():
+    def info():
         app = AppHelper()
 
         click.echo(f'install dir: {os.path.dirname(__file__)}')
-        click.echo(f'v{app.version}')
+        click.echo(f'app version: v{app.version}')
+        click.echo(f'repo: https://github.com/KndHvH/codeswap')
 
     @staticmethod
     def backup():
@@ -49,7 +50,6 @@ class ClickHelper():
                 BackupDatabase.load_database()
                 click.secho('database loaded successfully!',
                             bg='blue', fg='white')
-
 
     @staticmethod
     def default(title):
