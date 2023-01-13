@@ -1,10 +1,12 @@
 from setuptools import setup, find_packages
-from src.service.version import get_version
+from src.helper.app import AppHelper
+
+app = AppHelper()
 
 
 setup(
     name='codeswap',
-    version=get_version(),
+    version=app.version,
     license='MIT',
     author='Matias Herklotz',
     author_email='matherklotzz@gmail.com',
@@ -19,8 +21,8 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'cs = src.main:main',
-            'cswap = src.main:main',
+            'cs = main:main',
+            'cswap = main:main',
         ],
     },
 )

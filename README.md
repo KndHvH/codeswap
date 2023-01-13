@@ -16,6 +16,8 @@ Consiste em um programa que tem como função principal armazenar localmente tex
   - [Conteúdo](#conteúdo)
   - [Sobre](#sobre)
   - [Instalação](#instalação)
+  - [Troubleshooting](#troubleshooting)
+    - [The Term 'cs' or 'cswap' Is Not Recognized or Command Not Found](#the-term-cs-or-cswap-is-not-recognized-or-command-not-found)
   - [Funcionalidades](#funcionalidades)
     - [Adicione](#adicione)
       - [Arquivo exemplo](#arquivo-exemplo)
@@ -32,7 +34,6 @@ Consiste em um programa que tem como função principal armazenar localmente tex
     - [Inspiração](#inspiração)
     - [Key](#key)
     - [Senha](#senha)
-  - [Próximos Passos](#próximos-passos)
 
 ## Sobre
 
@@ -48,14 +49,24 @@ Outra questão positiva, é que não existe uma senha "certa" ou "errada", a ló
     
     $ pip install codeswap
 
+## Troubleshooting
+
+### The Term 'cs' or 'cswap' Is Not Recognized or Command Not Found
+
+1. Reinstale o Python pelo próprio [site](https://www.python.org/downloads/) deles,
+2. adicione o Python ao PATH pela própria instalação
+
+
+
+
 ## Funcionalidades
 ### Adicione
 
 Adicione um arquivo na base de dados, precisa criar um título e em sequida de uma senha.
 
-    $ cs file
+    $ cs
     or
-    $ cs file -t titulo_do_arquivo
+    $ cs -t titulo_do_arquivo
 
 #### Arquivo exemplo
  
@@ -73,7 +84,7 @@ consequentemente gerando textos criptografados completamente distintos e complet
 
 Terminal:
 
-    $ cs file -t zenit
+    $ cs -t zenit
     password_1234
 
     file_Zenit Polar é um sistema simples de criptografia, que consiste na substituição das letras de uma palavra pela sua correspondente no nome ZENIT POLAR.
@@ -94,7 +105,7 @@ Json File:
 
 Terminal:
 
-    $ cs file -t zenit2     
+    $ cs -t zenit2     
     password_1234
 
     file_Zenit Polar é um sistema simples de criptografia, que consiste na substituição das letras de uma palavra pela sua correspondente no nome ZENIT POLAR.
@@ -121,22 +132,22 @@ Json File:
  
 Leia um arquivo na base de dados, precisa inserir o nome do arquivo e a senha correspondente no mesmo comando usado anteriormente. Se colocar a senha errada, o programa irá trazer o documento da forma que ele está na base de dados, porem se for a senha certa, ele ira te mostrar o arquivo como gostaria.
 
-    $ cs file
+    $ cs
     or
-    $ cs file -t titulo_do_arquivo
+    $ cs -t titulo_do_arquivo
  
 #### Exemplo
  
 Senha certa:
     
-    $ cs file -t zenit
+    $ cs -t zenit
     password_1234
 
     Zenit Polar é um sistema simples de criptografia, que consiste na substituição das letras de uma palavra pela sua correspondente no nome ZENIT POLAR.
  
 Senha errada:
     
-    $ cs file -t zenit
+    $ cs -t zenit
     password_4321
 
     Lt'yevflojbv\u00e9vw4vOyOet4jvOy4zotOvDtv3byzel bjPyj>v0wtv3l'OyOetv'jvOwrOeyewy\u00e7\u00e3lvDjOvotebjOvDtvw4jvzjoj bjvztojvOwjv3lbbtOzl'Dt'etv'lv'l4tvLNE)8vfsZGhg
@@ -150,9 +161,9 @@ Utilize o mesmo comando usado para adicionar e ler um documento, faça as altera
 
 Apague um arquivo na base de dados da seguinte forma:
 
-    $ cs delete
+    $ cs -d
     or 
-    $ cs delete -t titulo_do_arquivo
+    $ cs -d -t titulo_do_arquivo
 
 Você precisará inserir o título do arquivo que deseja excluir, bem como sua senha. se a senha estiver incorreta, o arquivo não será removido, caso contrário, será removido com sucesso.
 
@@ -160,14 +171,13 @@ Você precisará inserir o título do arquivo que deseja excluir, bem como sua s
 
 Liste os arquivos presentes localmente da seguinte forma:
 
-    $ cs list
+    $ cs -l
 
 ### Backup
 
-Com os seguintes comandos você pode exportar ou importar um arquivo Json com todas as informações necessárias para ler os arquivos de qualquer dispositivo, se você tiver a senha é claro ;)
+Com o seguinte comando você pode exportar ou importar um arquivo Json com todas as informações necessárias para ler os arquivos de qualquer dispositivo, se você tiver a senha é claro ;)
 
-    $ cs backup -b save
-    $ cs backup -b load
+    $ cs -b
 
 Em ambos abrirá uma janela de arquivo, onde em 'save', você precisa selecionar onde deseja salvar o arquivo, e 'load', você deve selecionar o arquivo json que deseja importar, por padrão as janelas são abertas no caminho Desktop.
 
@@ -227,10 +237,7 @@ Por último, esse novo número é multiplicado pela senha que o usuário inseriu
  
 E por isso é impossível ler o arquivo sem a senha, porque sem a senha não é possível transformar o número em binário, sem o número em binário não é possível descobrir a key, e sem a key não é possível descriptografar o texto corretamente.
  
-## Próximos Passos
-  - feat: edit password
-  - feat: interface command
-  - fix: read, edit, delete, non existant file
+
 
 
  
