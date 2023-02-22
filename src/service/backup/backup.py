@@ -34,6 +34,8 @@ class BackupDatabase():
 
     @staticmethod
     def _backup_overrite_warning() -> None:
+
+        #TODO Custom warning, from file to file
         click.secho('Warning!', bg='yellow', fg='black')
         click.secho('if wan\'t to replace a more recent version with an older version', fg='yellow')
         click.secho('you must first delete the local version, use:', fg='yellow')
@@ -60,12 +62,16 @@ class BackupDatabase():
             for local_file in local_file_list:
                 if remote_file['title'] != local_file['title']:
                     continue
-
+                
+                #TODO Fix warning location
                 BackupDatabase._backup_overrite_warning()
 
                 if 'date' in remote_file:
                     if 'date' in local_file:
                         if DateHelper.remote_date_is_more_recent(local_file['date'],remote_file['date']):
+                            # TODO Remove print
+                            print(local_file['date'])
+                            print(remote_file['date'])
                             continue
 
                     else: 
