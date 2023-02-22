@@ -23,9 +23,11 @@ class ClickHelper():
     def list_files():
         click.secho('titles_', fg='blue')
 
-        files = Repository.get_json()['code']
+        files = Repository.get_json()
 
-        for file in files:
+        sorted_files = sorted(files["code"], key=lambda x: x["title"])
+
+        for file in sorted_files:
 
             if 'date' not in file: file['date'] = '00:00:00 00-00-0000'
             
