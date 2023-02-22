@@ -26,7 +26,13 @@ class ClickHelper():
         files = Repository.get_json()['code']
 
         for file in files:
-            click.echo(file['title'])
+
+            if 'date' not in file: file['date'] = '00:00:00 00-00-0000'
+            
+            title_size = len(file['title'])
+            i = 30 - title_size
+
+            click.echo(file['title'] + i*'.' + file['date'])
 
     @staticmethod
     def info():
