@@ -16,6 +16,7 @@ class UpdateApp():
 
     def __match_version(self,new_version) -> bool:
 
+        if new_version == None: return False
         if 'beta' in app.version: return False
 
         new_version = new_version.split('.')
@@ -41,4 +42,5 @@ class UpdateApp():
         click.secho('app updated successfully', bg='blue', fg='white')
 
     def __get_remote_version(self):
-        return req.get("https://kndhvh.github.io/codeswap.json").json()['codeswap']
+        try: return req.get("https://kndhvh.github.io/codeswap.json").json()['codeswap']
+        except: return None
