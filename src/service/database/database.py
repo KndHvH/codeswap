@@ -34,7 +34,7 @@ class Database():
                 file = json.load(file)
                 raise FileAlreadyExists
 
-        except FileNotFoundError:
+        except:
             with open(filepath, "w") as file:
                 json.dump({'code': []}, file)
 
