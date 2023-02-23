@@ -12,7 +12,7 @@ NewUser()
 @ click.command(short_help='create or edit a file', context_settings=dict(help_option_names=['-h', '--help']))
 @ click.option('-t', '--title', default=None, help='Select a file by title')
 @ click.option('-l', '--list', default=None, help='List all files', is_flag=True)
-@ click.option('-d', 'command',  help='Selete a file',  flag_value='d')
+@ click.option('-d', 'command',  help='Delete a file',  flag_value='d')
 @ click.option('-i', 'command',  help='App version and install path',  flag_value='i')
 @ click.option('-b', 'command',  help='Backup all files', flag_value='b')
 def main(title, list, command):

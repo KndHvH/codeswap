@@ -4,6 +4,7 @@ import click
 from src.helper.app import AppHelper
 from src.helper.binary import BinaryHelper
 from src.helper.string import StringHelper
+from src.helper.date import DateHelper
 from src.service.database.database import Database
 
 script_path = os.path.dirname(__file__)
@@ -19,14 +20,14 @@ class Repository():
 
     @staticmethod
     def get_json(path=None) -> None:
-        if path == None:
+        if path is None:
             path = Repository._local_json_path()
         for _ in range(0, 2):
             try:
                 with open(path, "r") as file:
                     return json.load(file)
 
-            except FileNotFoundError:
+            except:
                 Database()
 
     @staticmethod
@@ -93,7 +94,7 @@ class Repository():
                 return key[1:]
 
     @staticmethod
-    def gen_dict(master, password, title, user) -> dict:
+    def gen_dict(master, password, title, user, date=DateHelper.formate_date(DateHelper.get_date())) -> dict:
 
         master = StringHelper.swap(master, password)
         password = ':' + password
@@ -101,47 +102,46 @@ class Repository():
             int(BinaryHelper.binary_to_count(
                 BinaryHelper.code_to_binary(password)))
 
-        data = {'title': '', 'user': '', 'file': ''}
+        data = {'title': '', 'user': '', 'file': '', 'date': ''}
 
         if len(str(user)) > 255:
             data['file'] = master
             data['title'] = title
             data['user'] = user
+            data['date'] = date
 
         return data
 
     @staticmethod
     def edit_file(title, user):
+        file_content = Repository.get_file_text(title, user)
 
-        file = Repository.get_file_text(title, user)
-
-        if not file:
-            json = Repository.gen_dict(
+        if not file_content:
+            data = Repository.gen_dict(
                 click.edit(), StringHelper.genCode(), title, user)
-            Repository.save_json(json)
+            Repository.save_json(data)
             return
 
-        master = click.edit(file)
+        edited_content = click.edit(file_content)
 
-        if master == None:
-            master = file
+        if edited_content is None:
+            edited_content = file_content
 
-        json = Repository.gen_dict(
-            master, Repository.get_key(title, user), title, user)
-
-        Repository.save_json(json)
+        data = Repository.gen_dict(
+            edited_content, Repository.get_key(title, user), title, user)
+        Repository.save_json(data)
 
     @staticmethod
     def delete_file(title, user):
 
-        json = Repository.gen_dict(
+        data = Repository.gen_dict(
             '', Repository.get_key(title, user), title, user)
 
-        Repository.save_json(json)
+        Repository.save_json(data)
 
     @staticmethod
     def get_file_title(title):
         if not title:
             return click.prompt(click.style(
-            'file title_', fg='blue'), prompt_suffix='')
+                'file title_', fg='blue'), prompt_suffix='')
         return title
