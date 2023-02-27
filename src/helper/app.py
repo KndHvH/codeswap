@@ -3,7 +3,7 @@
 class AppHelper():
 
     def __init__(self) -> None:
-        self.__version = '1.3.0'
+        self.__version = '1.3.01'
         self.__db_path = '../../database/db.json'
         self.__db_foulder_path = '../../database'
         self.__db_file_name = 'db.json'
