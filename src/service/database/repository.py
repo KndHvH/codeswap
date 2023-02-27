@@ -94,8 +94,12 @@ class Repository():
                 return key[1:]
 
     @staticmethod
-    def gen_dict(master, password, title, user, date=DateHelper.formate_date(DateHelper.get_date())) -> dict:
+    def gen_dict(master, password, title, user, date=None) -> dict:
 
+        if date is None:
+            date = DateHelper.formate_date(DateHelper.get_date())
+
+        
         master = StringHelper.swap(master, password)
         password = ':' + password
         user = user * \
@@ -104,7 +108,7 @@ class Repository():
 
         data = {'title': '', 'user': '', 'file': '', 'date': ''}
 
-        if len(str(user)) > 255:
+        if len(str(user)) > 175:
             data['file'] = master
             data['title'] = title
             data['user'] = user
