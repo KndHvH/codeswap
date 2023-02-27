@@ -8,7 +8,6 @@ from src.service.database.repository import Repository
 from src.helper.date import DateHelper
 
 
-
 desktop = os.path.normpath(os.path.expanduser("~/Desktop"))
 scriptPath = os.path.dirname(__file__)
 
@@ -33,13 +32,51 @@ class BackupDatabase():
         return fd.askdirectory(title='select save foulder', initialdir=desktop)
 
     @staticmethod
-    def _backup_overrite_warning() -> None:
+    def _backup_overrite_warning(local_file, remote_file) -> None:
 
-        #TODO Custom warning, from file to file
+        title = local_file['title']
+
+        if 'date' not in local_file:
+            local_file['date'] = '00:00:00 00-00-0000'
+        if 'date' not in remote_file:
+            remote_file['date'] = '00:00:00 00-00-0000'
+
+        local_date = local_file['date']
+        remote_date = remote_file['date']
+
         click.secho('Warning!', bg='yellow', fg='black')
-        click.secho('if wan\'t to replace a more recent version with an older version', fg='yellow')
-        click.secho('you must first delete the local version, use:', fg='yellow')
-        click.secho('\'cs -d -t ~filename\'', fg='yellow')
+        click.secho(
+            f'if wan\'t to replace \'{title}\' with a older version', fg='yellow')
+        click.secho(
+            f'you must first delete the local version of \'{title}\' and try again, use:', fg='yellow')
+        click.secho(f'\'cs -d -t \'{title}\'\'', fg='yellow')
+        click.secho(f'Local Version:....{local_date}', fg='yellow')
+        click.secho(f'Backup Version:...{remote_date}', fg='yellow')
+
+    @staticmethod
+    def _backup_overrite_success(local_file, remote_file) -> None:
+
+        title = local_file['title']
+
+        if 'date' not in local_file:
+            local_file['date'] = '00:00:00 00-00-0000'
+        if 'date' not in remote_file:
+            remote_file['date'] = '00:00:00 00-00-0000'
+
+        local_date = local_file['date']
+        remote_date = remote_file['date']
+
+        click.secho('Success!', bg='green', fg='black')
+        click.secho(f'\'{title}\' replaced with success!', fg='green')
+        click.secho(f'Local Version:....{local_date}', fg='green')
+        click.secho(f'Backup Version:...{remote_date}', fg='green')
+
+    @staticmethod
+    def _backup_added_success(remote_file) -> None:
+        title = remote_file['title']
+
+        click.secho('Success!', bg='green', fg='black')
+        click.secho(f'\'{title}\' added with success!', fg='green')
 
     @staticmethod
     def save_backup_path():
@@ -53,35 +90,36 @@ class BackupDatabase():
     @staticmethod
     def load_database():
 
-        remote_file_list = Repository.get_json(path=BackupDatabase._get_backup_path())['code']
+        # TODO Melhorar essa maçaroca (dividir o conteudo dentro do segundo for para uma funcao separada)
+
+        remote_file_list = Repository.get_json(
+            path=BackupDatabase._get_backup_path())['code']
         local_file_list = Repository.get_json()['code']
 
         for remote_file in remote_file_list:
             append = True
-
             for local_file in local_file_list:
                 if remote_file['title'] != local_file['title']:
                     continue
-                
-                #TODO Fix warning location
-                BackupDatabase._backup_overrite_warning()
 
                 if 'date' in remote_file:
                     if 'date' in local_file:
-                        if DateHelper.remote_date_is_more_recent(local_file['date'],remote_file['date']):
-                            # TODO Remove print
-                            print(local_file['date'])
-                            print(remote_file['date'])
+                        if DateHelper.remote_date_is_more_recent(local_file['date'], remote_file['date']):
+                            local_file_list.remove(local_file)
+                            local_file_list.append(remote_file)
+                            BackupDatabase._backup_overrite_success(
+                                local_file, remote_file)
+                            append = False
                             continue
-
-                    else: 
-                        continue                
-
+                    else:
+                        continue
+                BackupDatabase._backup_overrite_warning(
+                    local_file, remote_file)
                 append = False
 
             if append:
                 local_file_list.append(remote_file)
-            
+                BackupDatabase._backup_added_success(remote_file)
 
         Repository.save_on_dbjson_file(local_file_list)
 
