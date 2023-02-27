@@ -29,8 +29,9 @@ class ClickHelper():
 
         for file in sorted_files:
 
-            if 'date' not in file: file['date'] = '00:00:00 00-00-0000'
-            
+            if 'date' not in file:
+                file['date'] = '00:00:01 01-01-1900'
+
             title_size = len(file['title'])
             i = 30 - title_size
 

@@ -32,17 +32,19 @@ class BackupDatabase():
         return fd.askdirectory(title='select save foulder', initialdir=desktop)
 
     @staticmethod
-    def _backup_overrite_warning(local_file, remote_file) -> None:
-
-        title = local_file['title']
-
+    def _date_formated_display(local_file, remote_file):
         if 'date' not in local_file:
-            local_file['date'] = '00:00:00 00-00-0000'
+            local_file['date'] = '00:00:01 01-01-1900'
         if 'date' not in remote_file:
-            remote_file['date'] = '00:00:00 00-00-0000'
+            remote_file['date'] = '00:00:01 01-01-1900'
 
-        local_date = local_file['date']
-        remote_date = remote_file['date']
+        return local_file['date'], remote_file['date']
+
+    @staticmethod
+    def _backup_overrite_warning(local_file, remote_file) -> None:
+        title = local_file['title']
+        local_date, remote_date = BackupDatabase._date_formated_display(
+            local_file, remote_file)
 
         click.secho('Warning!', bg='yellow', fg='black')
         click.secho(
@@ -55,16 +57,9 @@ class BackupDatabase():
 
     @staticmethod
     def _backup_overrite_success(local_file, remote_file) -> None:
-
         title = local_file['title']
-
-        if 'date' not in local_file:
-            local_file['date'] = '00:00:00 00-00-0000'
-        if 'date' not in remote_file:
-            remote_file['date'] = '00:00:00 00-00-0000'
-
-        local_date = local_file['date']
-        remote_date = remote_file['date']
+        local_date, remote_date = BackupDatabase._date_formated_display(
+            local_file, remote_file)
 
         click.secho('Success!', bg='green', fg='black')
         click.secho(f'\'{title}\' replaced with success!', fg='green')
@@ -90,37 +85,26 @@ class BackupDatabase():
     @staticmethod
     def load_database():
 
-        # TODO Melhorar essa maçaroca (dividir o conteudo dentro do segundo for para uma funcao separada)
-
-        remote_file_list = Repository.get_json(
-            path=BackupDatabase._get_backup_path())['code']
-        local_file_list = Repository.get_json()['code']
+        remote_file_list, local_file_list = BackupDatabase._get_database_lists()
 
         for remote_file in remote_file_list:
             append = True
+
             for local_file in local_file_list:
                 if remote_file['title'] != local_file['title']:
                     continue
 
-                if 'date' in remote_file:
-                    if 'date' in local_file:
-                        if DateHelper.remote_date_is_more_recent(local_file['date'], remote_file['date']):
-                            local_file_list.remove(local_file)
-                            local_file_list.append(remote_file)
-                            BackupDatabase._backup_overrite_success(
-                                local_file, remote_file)
-                            append = False
-                            continue
-                    else:
-                        continue
-                BackupDatabase._backup_overrite_warning(
-                    local_file, remote_file)
+                if 'date' in remote_file and 'date' in local_file:
+                    local_file_list = BackupDatabase._replace_files_by_date(local_file_list,local_file,remote_file)
+                    append = False
+                    break
+
+                BackupDatabase._backup_overrite_warning(local_file, remote_file)
                 append = False
 
             if append:
                 local_file_list.append(remote_file)
                 BackupDatabase._backup_added_success(remote_file)
-
         Repository.save_on_dbjson_file(local_file_list)
 
     @staticmethod
@@ -137,3 +121,27 @@ class BackupDatabase():
             except ValueError:
                 click.secho('error!', bg='red', fg='white')
                 click.echo('choose from \'s\' or \'l\'_')
+
+    @staticmethod
+    def _fix_00(date):
+        if date == '00:00:00 00-00-0000':
+            return '00:00:01 01-01-1900'
+        return date
+
+    @staticmethod
+    def _get_database_lists():
+        remote_file_list = Repository.get_json(
+            path=BackupDatabase._get_backup_path())['code']
+        local_file_list = Repository.get_json()['code']
+
+        return remote_file_list, local_file_list
+
+    @staticmethod
+    def _replace_files_by_date(local_file_list, local_file, remote_file):
+        local_date = BackupDatabase._fix_00(local_file['date'])
+        remote_date = BackupDatabase._fix_00(remote_file['date'])
+        if DateHelper.remote_date_is_more_recent(local_date, remote_date):
+            local_file_list.remove(local_file)
+            local_file_list.append(remote_file)
+            BackupDatabase._backup_overrite_success(local_file, remote_file)
+        return local_file_list

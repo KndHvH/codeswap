@@ -29,20 +29,3 @@ class DateHelper():
 
         
 
-
-# today = DateHelper.get_date()
-# print(type(today))
-# print(today)
-
-# old = datetime.datetime(2021, 1, 1,11,0,12)
-# print(old)
-
-
-# today = DateHelper.formate_date(today)
-# print(type(today))
-
-# old = DateHelper.formate_date(old)
-# print(old)
-
-
-# print(DateHelper.remote_date_is_more_recent(old,today))
